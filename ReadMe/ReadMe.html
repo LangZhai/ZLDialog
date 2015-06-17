@@ -1,0 +1,1400 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="ZLDialog是一款由智能小菜菜开发的基于jQuery的弹窗插件。" />
+        <meta name="keywords" content="ZLDialog,JS插件,前端开发,智能小菜菜,SmartCai,SmartOtaku" />
+        <link rel="icon" href="http://smartotaku.me/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://smartotaku.me/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="blackboard.css" />
+        <link rel="stylesheet" type="text/css" href="../css/ZLDialog.css" />
+        <title>ZLDialog-ReadMe</title>
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                background: #777777;
+                font-family: "幼圆";
+            }
+
+            .textRight {
+                text-align: right;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            #contentDIV {
+                margin: 0 auto;
+                position: relative;
+                width: 1000px;
+                padding: 20px;
+                color: #FFFFFF;
+                text-shadow: 1px 1px 1px #337799;
+            }
+
+            #contentDIV a {
+                color: #000000;
+                text-shadow: 1px 1px 1px #FFFFFF;
+                text-decoration: none;
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            #contentDIV a:hover {
+                text-decoration: underline;
+            }
+
+            pre {
+                text-shadow: none;
+            }
+
+            #headDIV h1 {
+                margin-bottom: 0;
+            }
+
+            #headDIV h4 {
+                margin: 0;
+            }
+
+            #headDIV h5 {
+                margin-top: 10px;
+            }
+
+            #menuUL {
+                list-style: none;
+                margin: 10px 0 0 0;
+                padding: 0;
+                font-weight: bold;
+            }
+
+            #menuUL li {
+                display: inline-block;
+                padding: 5px 20px;
+                margin: 0 10px;
+                cursor: pointer;
+                background: #888888;
+                box-shadow: 1px 1px 1px #000000;
+            }
+
+            #menuUL li {
+            + display : inline;
+            }
+
+            #menuUL li:hover, #menuUL li.current {
+                background: #555555;
+            }
+
+            #contentWrapDIV {
+                border-top: 2px solid #AAAAAA;
+                border-bottom: 2px solid #AAAAAA;
+                overflow: hidden;
+            + padding : 20 px 0 0 0;
+            }
+
+            #contentWrapDIV h2 {
+                color: #000000;
+                text-shadow: 1px 1px 1px #FFFFFF;
+            }
+
+            #contentWrapDIV p {
+                line-height: 25px;
+                font-size: 14px;
+            }
+
+            #contentWrapDIV > div {
+                width: 1000%;
+            }
+
+            #contentWrapDIV > div > div {
+                float: left;
+                width: 1000px;
+                min-height: 400px;
+                padding-bottom: 10px;
+            }
+
+            .attrTable {
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 13px;
+                background: #DDDDDD;
+                color: #233233;
+                text-shadow: 1px 1px 1px #FFFFFF;
+                border-color: #AAAAAA;
+            }
+
+            .attrTable .h3TD {
+                background: #BBBBBB;
+            }
+
+            .attrTable td {
+                border-color: #AAAAAA;
+                padding: 5px;
+            }
+
+            .attrTable th {
+                border-color: #AAAAAA;
+                padding: 5px 0;
+            }
+
+            #tryArea {
+                background: #000000;
+                color: #FFFFFF;
+                font-size: 14px;
+                height: 250px;
+                width: 1000px;
+                resize: none;
+            }
+
+            #footDIV div {
+                float: right;
+            }
+
+            #footDIV div a {
+                display: block;
+            }
+
+            #footDIV div img {
+                border: none;
+            }
+
+            #footDIV h4 {
+                margin-bottom: 0;
+            }
+
+            #footDIV h5 {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contentDIV">
+            <div id="headDIV" class="textRight">
+                <h1>ZLDialog</h1>
+                <h4>V 1.3.1</h4>
+                <h5>build 2014.02.28</h5>
+            </div>
+            <ul id="menuUL">
+                <li class="current">初识我</li>
+                <li>了解我</li>
+                <li>非礼我</li>
+                <li>关于我</li>
+                <li>迎娶我</li>
+            </ul>
+            <div id="contentWrapDIV">
+                <div>
+                    <div>
+                        <h2>我是什么？</h2>
+                        <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件，压缩后只有5KB哦！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
+                        <button id="firstHello">手贱点一下！</button>
+                        <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:;" id="firstTX">@智能小菜菜</a>！！！
+                        </p>
+                        <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:;" id="browser">更现代的浏览器</a>吧！
+                        </p>
+                        <p>啊对了，顺便提一嘴，欢迎大家为我设计新的皮肤哦O(∩_∩)O~~</p>
+                    </div>
+                    <div class="hidden">
+                        <h2>如何调教我？</h2>
+                        <p>首先将ZLDialog的CSS及JS分别引入到你的页面中：</p>
+<pre data-language="html">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;ZLDialog-ReadMe&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="../css/ZLDialog.css"/&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!--为了使页面加载更快，最好将JS放置在&lt;body&gt;的末尾--&gt;
+    &lt;script type="text/javascript" src="../js/ZLDialog.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        <p>接下来就可以愉快地玩(LAI)耍(YI)啦(FA)！</p>
+<pre data-language="javascript">
+$.dialog.alert({
+  content:"弹弹弹，弹走鱼尾纹~~"
+});
+</pre>
+                        <div class="hidden">
+                            $.dialog.alert({
+                            content:"弹弹弹，弹走鱼尾纹~~"
+                            });
+                        </div>
+                        <button class="doJS">弹一下！</button>
+                        <p>很简单对吧？这只是一个很简单的例子。现在来看一个稍微复杂一点的！</p>
+<pre data-language="javascript">
+$.dialog({
+  content:"就只是简单测试一下好了！",
+  hideX:true,
+  drag:false,
+  lock:false,
+  closeBack:function(){
+    $.dialog.message({
+      content:"万万没想到，啦啦啦啦啦~~~"
+    });
+  },
+  buttons:[
+    {
+      text:"好的呀！"
+    }
+  ]
+});
+</pre>
+                        <div class="hidden">
+                            $.dialog({
+                            title:"嗯哼",
+                            content:"就只是简单测试一下好了！",
+                            hideX:true,
+                            drag:false,
+                            lock:false,
+                            closeBack:function(){
+                            $.dialog.message({
+                            content:"万万没想到，啦啦啦啦啦~~~"
+                            });
+                            },
+                            buttons:[
+                            {
+                            text:"好的呀！"
+                            }
+                            ]
+                            });
+                        </div>
+                        <button class="doJS">弹一下！</button>
+                        <p>所以你看，我是不是很好调教呢？接下来换点别的吧，比如让我加载一个外部链接试试！</p>
+<pre data-language="javascript">
+$.dialog.open({
+  title:"百度搜索",
+  inFrame:true,
+  url:"http://www.baidu.com"
+});
+</pre>
+                        <div class="hidden">
+                            $.dialog.open({
+                            title:"百度搜索",
+                            inFrame:true,
+                            url:"http://www.baidu.com"
+                            });
+                        </div>
+                        <button class="doJS">加载！</button>
+                        <p>不仅如此，我还可以直接加载元素内容哦！</p>
+<pre data-language="javascript">
+//对话框初始化后会返回一个函数用来关闭对话框
+var closeDialog=$("#testDIV").dialog({
+  title:"百度搜索",
+  hideX:true,
+  lock:false,
+  size:{
+    width:220
+  },
+  buttons:[
+    {
+      text:"百度一下",
+      callback:function(){
+        $(this).parent().prev().find("form").submit();
+        closeDialog();
+      }
+    },
+    {
+      text:"取消"
+    }
+  ]
+});
+</pre>
+                        <div class="hidden">
+                            var closeDialog=$("#testDIV").dialog({
+                            title:"百度搜索",
+                            hideX:true,
+                            lock:false,
+                            size:{
+                            width:220
+                            },
+                            buttons:[
+                            {
+                            text:"百度一下",
+                            callback:function(){
+                            $(this).parent().prev().find("form").submit();
+                            closeDialog();
+                            }
+                            },
+                            {
+                            text:"取消"
+                            }
+                            ]
+                            });
+                        </div>
+                        <button class="doJS">加载！</button>
+                        <p>最后来介绍一下我的特殊技能——预览面板吧！</p>
+<pre data-language="javascript">
+$("#previewButtonA").preview({
+  content:"preview.jpg",
+  type:"img",
+  direction:"top"
+});
+$("#previewButtonB").preview({
+  content:"这是一首简单的小情歌 唱着我们心头的曲折"
+});
+</pre>
+                        <button id="previewButtonA">预览图片！</button>
+                        <button id="previewButtonB">预览其他！</button>
+                        <p>依然不清楚怎么使用？好吧......下面是参数列表，自己看咯！~\(≧▽≦)/~啦啦啦</p>
+                        <table class="attrTable" border="1">
+                            <tr>
+                                <td colspan="4" class="h3TD"><h3>显示对话框——$.dialog(option)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>对话框标题</td>
+                                <td>字符</td>
+                                <td>"对话框"</td>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>对话框内容</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>hideX</td>
+                                <td>是否隐藏右上角关闭按钮</td>
+                                <td>布尔</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>buttons</td>
+                                <td>对话框按钮数组</td>
+                                <td>对象数组
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>text</td>
+                                            <td>按钮文本</td>
+                                            <td>字符</td>
+                                            <td>null</td>
+                                        </tr>
+                                        <tr>
+                                            <td>callback</td>
+                                            <td>按钮点击回调函数</td>
+                                            <td>函数</td>
+                                            <td>null（点击后关闭对话框）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>size</td>
+                                <td>对话框大小</td>
+                                <td>对象
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>width</td>
+                                            <td>宽度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>height</td>
+                                            <td>高度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>drag</td>
+                                <td>是否允许拖动对话框</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>lock</td>
+                                <td>是否添加背景锁定</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>对话框显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>对话框关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>对话框内容padding</td>
+                                <td>字符（写法同CSS）</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="h3TD"><h3>显示消息框——$.dialog.message(option)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>消息框内容</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>2000</td>
+                            </tr>
+                            <tr>
+                                <td>lock</td>
+                                <td>是否添加背景锁定</td>
+                                <td>布尔</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>消息框显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>消息框关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="h3TD"><h3>显示警告框——$.dialog.alert(option)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>警告框标题</td>
+                                <td>字符</td>
+                                <td>"提示"</td>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>警告框内容</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>hideX</td>
+                                <td>是否隐藏右上角关闭按钮</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>size</td>
+                                <td>警告框大小</td>
+                                <td>对象
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>width</td>
+                                            <td>宽度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>height</td>
+                                            <td>高度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>drag</td>
+                                <td>是否允许拖动警告框</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>lock</td>
+                                <td>是否添加背景锁定</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>警告框显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>警告框关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>警告框内容padding</td>
+                                <td>字符（写法同CSS）</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="h3TD"><h3>显示确认警告框——$.dialog.confirm(option,yes,no)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>警告框标题</td>
+                                <td>字符</td>
+                                <td>"对话框"</td>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>警告框内容</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>hideX</td>
+                                <td>是否隐藏右上角关闭按钮</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>size</td>
+                                <td>警告框大小</td>
+                                <td>对象
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>width</td>
+                                            <td>宽度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>height</td>
+                                            <td>高度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>drag</td>
+                                <td>是否允许拖动警告框</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>lock</td>
+                                <td>是否添加背景锁定</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>警告框显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>警告框关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>警告框内容padding</td>
+                                <td>字符（写法同CSS）</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><h4>Ps:参数列表中"yes"和"no"分别是"确认"和"取消"按钮的回调函数，直接传入即可。</h4></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="h3TD"><h3>加载外部链接——$.dialog.open(option)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>url</td>
+                                <td>链接地址</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>对话框标题</td>
+                                <td>字符</td>
+                                <td>"对话框"</td>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>对话框内容</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>hideX</td>
+                                <td>是否隐藏右上角关闭按钮</td>
+                                <td>布尔</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>buttons</td>
+                                <td>对话框按钮数组</td>
+                                <td>对象数组
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>text</td>
+                                            <td>按钮文本</td>
+                                            <td>字符</td>
+                                            <td>null</td>
+                                        </tr>
+                                        <tr>
+                                            <td>callback</td>
+                                            <td>按钮点击回调函数</td>
+                                            <td>函数</td>
+                                            <td>null（点击后关闭对话框）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>size</td>
+                                <td>对话框大小</td>
+                                <td>对象
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>width</td>
+                                            <td>宽度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>height</td>
+                                            <td>高度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>drag</td>
+                                <td>是否允许拖动对话框</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>lock</td>
+                                <td>是否添加背景锁定</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>对话框显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>对话框关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>对话框内容padding</td>
+                                <td>字符（写法同CSS）</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>inFrame</td>
+                                <td>是否在Iframe中加载</td>
+                                <td>布尔</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="h3TD"><h3>加载元素内容——$.fn.dialog(option)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>title</td>
+                                <td>对话框标题</td>
+                                <td>字符</td>
+                                <td>"对话框"</td>
+                            </tr>
+                            <tr>
+                                <td>hideX</td>
+                                <td>是否隐藏右上角关闭按钮</td>
+                                <td>布尔</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>buttons</td>
+                                <td>对话框按钮数组</td>
+                                <td>对象数组
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>text</td>
+                                            <td>按钮文本</td>
+                                            <td>字符</td>
+                                            <td>null</td>
+                                        </tr>
+                                        <tr>
+                                            <td>callback</td>
+                                            <td>按钮点击回调函数</td>
+                                            <td>函数</td>
+                                            <td>null（点击后关闭对话框）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>size</td>
+                                <td>对话框大小</td>
+                                <td>对象
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>width</td>
+                                            <td>宽度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>height</td>
+                                            <td>高度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>drag</td>
+                                <td>是否允许拖动对话框</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>lock</td>
+                                <td>是否添加背景锁定</td>
+                                <td>布尔</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>对话框显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>对话框关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>对话框内容padding</td>
+                                <td>字符（写法同CSS）</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="h3TD"><h3>显示预览面板——$.fn.preview(option)</h3></td>
+                            </tr>
+                            <tr>
+                                <th>参数名</th>
+                                <th>参数意义</th>
+                                <th>值类型</th>
+                                <th>默认值</th>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>预览内容</td>
+                                <td>字符</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>预览类型</td>
+                                <td>字符（限选"img"）</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>自动关闭延时（毫秒）</td>
+                                <td>数字</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>size</td>
+                                <td>预览面板大小</td>
+                                <td>对象
+                                    <table class="attrTable" border="1">
+                                        <tr>
+                                            <th>参数名</th>
+                                            <th>参数意义</th>
+                                            <th>值类型</th>
+                                            <th>默认值</th>
+                                        </tr>
+                                        <tr>
+                                            <td>width</td>
+                                            <td>宽度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>height</td>
+                                            <td>高度</td>
+                                            <td>数字</td>
+                                            <td>null（自适应）</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>showBack</td>
+                                <td>预览面板显示回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>closeBack</td>
+                                <td>预览面板关闭回调函数</td>
+                                <td>函数</td>
+                                <td>null</td>
+                            </tr>
+                            <tr>
+                                <td>padding</td>
+                                <td>预览面板内容padding</td>
+                                <td>字符（写法同CSS）</td>
+                                <td>"10px"（type为"img"时）</td>
+                            </tr>
+                            <tr>
+                                <td>direction</td>
+                                <td>预览面板依附位置</td>
+                                <td>字符（限选"top"、"right"、"bottom"、"left"）</td>
+                                <td>"right"</td>
+                            </tr>
+                            <tr>
+                        </table>
+                    </div>
+                    <div class="hidden">
+                        <h2>讨厌啦！</h2>
+                        <p>已经把持不住了？那就试试你到底行不行吧！</p>
+                        <p>
+                            <textarea id="tryArea">
+$.dialog.message({
+    content:"开心时刻必胜客~~"
+});
+                            </textarea>
+                        </p>
+                        <button class="doJS">运行！</button>
+                    </div>
+                    <div class="hidden">
+                        <h2>我的诞生</h2>
+                        <p>其实，根本没有想到我会降生于这个世界......</p>
+                        <p>据说是为了满足某人的项目开发以及学习研究需要才诞生的。【所以不得不吐槽一下这皮肤真的让人家很不舒服呢！(╯﹏╰）】</p>
+                        <h2>我的成长</h2>
+                        <p>
+                            &nbsp;-2014-02-28&nbsp;&nbsp;&nbsp;&nbsp;1.3.1-<br />
+                            &nbsp;&nbsp;1.【Debug】修复IE11中外部链接加载崩溃BUG。（解决方法为换用1.11.0版jQuery，如在其他jQuery版本中发现加载BUG请设置inFrame:true）<br />
+                            <br />
+                            &nbsp;-2013-12-13&nbsp;&nbsp;&nbsp;&nbsp;1.3.0-<br />
+                            &nbsp;&nbsp;1.【Update】优化滚动条用户体验。<br />
+                            <br />
+                            &nbsp;-2013-12-09&nbsp;&nbsp;&nbsp;&nbsp;1.2.9-<br />
+                            &nbsp;&nbsp;1.【Debug】修复页面滚动后预览面板定位BUG；<br />
+                            &nbsp;&nbsp;2.【Update】为对话框按钮设置默认回调函数。<br />
+                            <br />
+                            -2013-12-05&nbsp;&nbsp;&nbsp;&nbsp;1.2.7-<br />
+                            &nbsp;&nbsp;1.【Debug】修复IE7中预览面板加载图片大小BUG。<br />
+                            <br />
+                            -2013-12-04&nbsp;&nbsp;&nbsp;&nbsp;1.2.6-<br />
+                            &nbsp;&nbsp;1.【Debug】修复按钮无法自动适配宽度的BUG；<br />
+                            &nbsp;&nbsp;2.【Debug】修复页面滚动后对话框拖动时的定位BUG；<br />
+                            &nbsp;&nbsp;3.【Debug】修复页面滚动后对话框关闭时的定位BUG。<br />
+                            <br />
+                            -2013-10-15&nbsp;&nbsp;&nbsp;&nbsp;1.2.3-<br />
+                            &nbsp;&nbsp;1.【Add】扩充加载链接方法使其可自定义加载模式。<br />
+                            <br />
+                            -2013-10-08&nbsp;&nbsp;&nbsp;&nbsp;1.2.2-<br />
+                            &nbsp;&nbsp;1.【Update】定义私有作用域避免代码污染。<br />
+                            <br />
+                            -2013-09-11&nbsp;&nbsp;&nbsp;&nbsp;1.2.1-<br />
+                            &nbsp;&nbsp;1.【Remove】废弃realWidth和realHeight方法，使用jQuery的outerWidth和outerHeight代替。<br />
+                            <br />
+                            -2013-08-28&nbsp;&nbsp;&nbsp;&nbsp;1.2.0-<br />
+                            &nbsp;&nbsp;1.【Debug】修复对话框关闭时位置闪跳的BUG。<br />
+                            <br />
+                            -2013-08-19&nbsp;&nbsp;&nbsp;&nbsp;1.1.9-<br />
+                            &nbsp;&nbsp;1.【Debug】修复预览面板图片大小BUG；<br />
+                            &nbsp;&nbsp;2.【Update】动态限制对话框大小。<br />
+                            <br />
+                            -2013-08-14&nbsp;&nbsp;&nbsp;&nbsp;1.1.7-<br />
+                            &nbsp;&nbsp;1.【Add】加入预览面板direction属性；<br />
+                            &nbsp;&nbsp;2.【Update】去掉预览面板图片最大宽度限制；<br />
+                            &nbsp;&nbsp;3.【Update】为预览面板设置默认padding值。<br />
+                            <br />
+                            -2013-08-12&nbsp;&nbsp;&nbsp;&nbsp;1.1.4-<br />
+                            &nbsp;&nbsp;1.【Update】修改对话框内容区域的overflow为auto。<br />
+                            <br />
+                            -2013-08-08&nbsp;&nbsp;&nbsp;&nbsp;1.1.3-<br />
+                            &nbsp;&nbsp;1.【Debug】修复浏览器窗口resize导致对话框自动关闭失效的BUG。<br />
+                            <br />
+                            -2013-08-01&nbsp;&nbsp;&nbsp;&nbsp;1.1.2-<br />
+                            &nbsp;&nbsp;1.【Debug】修复IE下预览面板大小无法自适应的BUG；<br />
+                            &nbsp;&nbsp;2.【Update】优化浏览器窗口resize事件；<br />
+                            &nbsp;&nbsp;3.【Update】修改ZLDialog出现/隐藏动画为从屏幕中间垂直展开/收缩；<br />
+                            &nbsp;&nbsp;4.【Debug】修复IE8及以下浏览器预览面板位置BUG；<br />
+                            &nbsp;&nbsp;5.【Update】调整预览面板对齐方式为中线对齐。<br />
+                            <br />
+                            -2013-07-26&nbsp;&nbsp;&nbsp;&nbsp;1.0.7-<br />
+                            &nbsp;&nbsp;1.【Debug】修复ZLDialog样式被覆盖的BUG；<br />
+                            &nbsp;&nbsp;2.【Add】加入显示预览面板功能。<br />
+                            <br />
+                            -2013-07-23&nbsp;&nbsp;&nbsp;&nbsp;1.0.5-<br />
+                            &nbsp;&nbsp;1.【Update】将“消息框”更名为“警告框”；<br />
+                            &nbsp;&nbsp;2.【Add】加入消息框功能。<br />
+                            <br />
+                            -2013-07-10&nbsp;&nbsp;&nbsp;&nbsp;1.0.3-<br />
+                            &nbsp;&nbsp;1.【Add】加入确认警告框功能；<br />
+                            &nbsp;&nbsp;2.【Add】加入加载外部链接功能；<br />
+                            &nbsp;&nbsp;3.【Update】代码优化。<br />
+                            <br />
+                            -2013-07-02&nbsp;&nbsp;&nbsp;&nbsp;1.0.0-<br />
+                            &nbsp;&nbsp;1.【Add】ZLDialog诞生。
+                        </p>
+                        <h2>关于作者</h2>
+                        <p>咳咳，终于该我登场了，妖怪速速退散！！！【散你妹，傻X】【左边泥垢！！！】</p>
+                        <p>
+                            好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在53kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
+							-->直男【讲这么多废话是要闹甚！！！不会有妹子看上你的魂淡！！！】，因为看到某篇文章说<!--
+							--><a href="javascript:;" onclick="$.dialog.open({title:'不定义JQuery插件，不要说会JQuery',url:'http://www.cnblogs.com/xcj26/p/3345556.html'});">“不定义JQuery插件，不要说会JQuery”</a><!--
+							-->，再加上确实也是项目需要因此就诞生了这货嗯。嘛，其实我也知道这皮肤真心丑爆，但是确实是没什么时间，并且我们看人不应该只看外表，看待一款插件也应该是这样嗯【分明是在找借口啊喂！】。于是<!--
+							-->觉得这货还算好用的老爷们，不妨为这货设计几款看得过去的皮肤，在这里替这货谢谢各位了！！！
+                        </p>
+                        <p>
+                            啊，对了，通常来讲这里应该留下联系方式对吧，于是我也勇敢地<a href="javascript:;" id="lastA">来一发！！！</a>
+                        </p>
+                    </div>
+                    <div class="hidden">
+                        <h2><a href="http:/zldialog.smartotaku.me/ZLDialog-1.3.1.rar" target="_blank">本站下载（只提供最新版链接，如需旧版请移步网盘下载）</a></h2>
+                        <h2><a href="http://pan.baidu.com/s/1c0CKr7q" target="_blank">网盘下载</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div id="footDIV">
+                <div><a title="smartotaku.me" href="http://smartotaku.me" target="_blank"><img src="http://smartotaku.me/favicon.ico" /></a></div>
+                <h4>© 2013-2014 智能小菜菜
+                    <script type="text/javascript">
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa883b86afd83a720b271fda07c3937f2' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                </h4>
+                <h5>本插件基于<a href="javascript:;" id="licenseA">LGPL开源协议</a>开发，欢迎一切非商业/商业目的使用。</h5>
+            </div>
+        </div>
+
+        <div id="testDIV" class="hidden">
+            <form action="http://www.baidu.com/s" target="_blank">
+                关键字　<input type="text" name="wd" />
+            </form>
+        </div>
+
+        <div id="licenseDIV" class="hidden">
+            <h3 style="text-align: center;">GNU LESSER GENERAL PUBLIC LICENSE</h3>
+            <p style="text-align: center;">Version 3, 29 June 2007</p>
+
+            <p>Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;</p><p>
+
+            Everyone is permitted to copy and distribute verbatim copies
+            of this license document, but changing it is not allowed.</p>
+
+            <p>This version of the GNU Lesser General Public License incorporates
+                the terms and conditions of version 3 of the GNU General Public
+                License, supplemented by the additional permissions listed below.</p>
+
+            <h4>0. Additional Definitions.</h4>
+
+            <p>As used herein, “this License” refers to version 3 of the GNU Lesser
+                General Public License, and the “GNU GPL” refers to version 3 of the GNU
+                General Public License.</p>
+
+            <p>“The Library” refers to a covered work governed by this License,
+                other than an Application or a Combined Work as defined below.</p>
+
+            <p>An “Application” is any work that makes use of an interface provided
+                by the Library, but which is not otherwise based on the Library.
+                Defining a subclass of a class defined by the Library is deemed a mode
+                of using an interface provided by the Library.</p>
+
+            <p>A “Combined Work” is a work produced by combining or linking an
+                Application with the Library. The particular version of the Library
+                with which the Combined Work was made is also called the “Linked
+                Version”.</p>
+
+            <p>The “Minimal Corresponding Source” for a Combined Work means the
+                Corresponding Source for the Combined Work, excluding any source code
+                for portions of the Combined Work that, considered in isolation, are
+                based on the Application, and not on the Linked Version.</p>
+
+            <p>The “Corresponding Application Code” for a Combined Work means the
+                object code and/or source code for the Application, including any data
+                and utility programs needed for reproducing the Combined Work from the
+                Application, but excluding the System Libraries of the Combined Work.</p>
+
+            <h4>1. Exception to Section 3 of the GNU GPL.</h4>
+
+            <p>You may convey a covered work under sections 3 and 4 of this License
+                without being bound by section 3 of the GNU GPL.</p>
+
+            <h4>2. Conveying Modified Versions.</h4>
+
+            <p>If you modify a copy of the Library, and, in your modifications, a
+                facility refers to a function or data to be supplied by an Application
+                that uses the facility (other than as an argument passed when the
+                facility is invoked), then you may convey a copy of the modified
+                version:</p>
+
+            <ul>
+                <li>a) under this License, provided that you make a good faith effort to
+                    ensure that, in the event an Application does not supply the
+                    function or data, the facility still operates, and performs
+                    whatever part of its purpose remains meaningful, or
+                </li>
+
+                <li>b) under the GNU GPL, with none of the additional permissions of
+                    this License applicable to that copy.
+                </li>
+            </ul>
+            <h4>3. Object Code Incorporating Material from Library Header Files.
+            </h4>
+
+            <p>The object code form of an Application may incorporate material from
+                a header file that is part of the Library. You may convey such object
+                code under terms of your choice, provided that, if the incorporated
+                material is not limited to numerical parameters, data structure
+                layouts and accessors, or small macros, inline functions and templates
+                (ten or fewer lines in length), you do both of the following:</p>
+
+            <ul>
+                <li>a) Give prominent notice with each copy of the object code that the
+                    Library is used in it and that the Library and its use are
+                    covered by this License.
+                </li>
+
+                <li>b) Accompany the object code with a copy of the GNU GPL and this license
+                    document.
+                </li>
+            </ul>
+            <h4>4. Combined Works.</h4>
+
+            <p>You may convey a Combined Work under terms of your choice that,
+                taken together, effectively do not restrict modification of the
+                portions of the Library contained in the Combined Work and reverse
+                engineering for debugging such modifications, if you also do each of
+                the following:</p>
+
+            <ul>
+                <li>a) Give prominent notice with each copy of the Combined Work that
+                    the Library is used in it and that the Library and its use are
+                    covered by this License.
+                </li>
+
+                <li>b) Accompany the Combined Work with a copy of the GNU GPL and this license
+                    document.
+                </li>
+
+                <li>c) For a Combined Work that displays copyright notices during
+                    execution, include the copyright notice for the Library among
+                    these notices, as well as a reference directing the user to the
+                    copies of the GNU GPL and this license document.
+                </li>
+
+                <li>d) Do one of the following:
+
+                    <ul>
+                        <li>0) Convey the Minimal Corresponding Source under the terms of this
+                            License, and the Corresponding Application Code in a form
+                            suitable for, and under terms that permit, the user to
+                            recombine or relink the Application with a modified version of
+                            the Linked Version to produce a modified Combined Work, in the
+                            manner specified by section 6 of the GNU GPL for conveying
+                            Corresponding Source.
+                        </li>
+
+                        <li>1) Use a suitable shared library mechanism for linking with the
+                            Library. A suitable mechanism is one that (a) uses at run time
+                            a copy of the Library already present on the user's computer
+                            system, and (b) will operate properly with a modified version
+                            of the Library that is interface-compatible with the Linked
+                            Version.
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>e) Provide Installation Information, but only if you would otherwise
+                    be required to provide such information under section 6 of the
+                    GNU GPL, and only to the extent that such information is
+                    necessary to install and execute a modified version of the
+                    Combined Work produced by recombining or relinking the
+                    Application with a modified version of the Linked Version. (If
+                    you use option 4d0, the Installation Information must accompany
+                    the Minimal Corresponding Source and Corresponding Application
+                    Code. If you use option 4d1, you must provide the Installation
+                    Information in the manner specified by section 6 of the GNU GPL
+                    for conveying Corresponding Source.)
+                </li>
+            </ul>
+            <h4>5. Combined Libraries.</h4>
+
+            <p>You may place library facilities that are a work based on the
+                Library side by side in a single library together with other library
+                facilities that are not Applications and are not covered by this
+                License, and convey such a combined library under terms of your
+                choice, if you do both of the following:</p>
+
+            <ul>
+                <li>a) Accompany the combined library with a copy of the same work based
+                    on the Library, uncombined with any other library facilities,
+                    conveyed under the terms of this License.
+                </li>
+
+                <li>b) Give prominent notice with the combined library that part of it
+                    is a work based on the Library, and explaining where to find the
+                    accompanying uncombined form of the same work.
+                </li>
+
+            </ul>
+            <h4>6. Revised Versions of the GNU Lesser General Public License.</h4>
+
+            <p>The Free Software Foundation may publish revised and/or new versions
+                of the GNU Lesser General Public License from time to time. Such new
+                versions will be similar in spirit to the present version, but may
+                differ in detail to address new problems or concerns.</p>
+
+            <p>Each version is given a distinguishing version number. If the
+                Library as you received it specifies that a certain numbered version
+                of the GNU Lesser General Public License “or any later version”
+                applies to it, you have the option of following the terms and
+                conditions either of that published version or of any later version
+                published by the Free Software Foundation. If the Library as you
+                received it does not specify a version number of the GNU Lesser
+                General Public License, you may choose any version of the GNU Lesser
+                General Public License ever published by the Free Software Foundation.</p>
+
+            <p>If the Library as you received it specifies that a proxy can decide
+                whether future versions of the GNU Lesser General Public License shall
+                apply, that proxy's public statement of acceptance of any version is
+                permanent authorization for you to choose that version for the
+                Library.</p>
+        </div>
+
+        <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="rainbow-custom.min.js"></script>
+        <script type="text/javascript" src="../js/ZLDialog.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var $contentWrapDIV = $("#contentWrapDIV").children();
+                $(".doJS").bind("click", function () {
+                    var $prev = $(this).prev();
+                    if ($prev.is("div"))
+                        eval($prev.html());
+                    else
+                        eval($prev.children().val());
+                });
+                $("#menuUL").children("li").bind("click", function () {
+                    var $this = $(this).addClass("current"), index = $this.index();
+                    $this.siblings().removeClass("current");
+                    $contentWrapDIV.children(":eq(" + index + ")").show(500).siblings().hide(500);
+                });
+                $("#firstHello").bind("click", function () {
+                    $.dialog.message({
+                        content: "哼(ˉ(∞)ˉ)唧！"
+                    });
+                });
+                $("#firstTX").bind("click", function () {
+                    var closeDialog = $.dialog({
+                        title: "泥垢！！！",
+                        content: "再说我坏话就把你删掉！",
+                        hideX: true,
+                        buttons: [
+                            {
+                                text: "怪我咯？",
+                                callback: function () {
+                                    closeDialog();
+                                    $.dialog.message({
+                                        content: "......"
+                                    });
+                                }
+                            },
+                            {
+                                text: "主人我错了！",
+                                callback: function () {
+                                    closeDialog();
+                                    $.dialog.message({
+                                        content: "哼~~【偷笑】"
+                                    });
+                                }
+                            }
+                        ]
+                    });
+                });
+                $("#browser").bind("click", function () {
+                    $.dialog({
+                        title: "建议使用它们",
+                        size: {
+                            width: 250
+                        },
+                        content: "<ul><li>Chrome(版本帝伤比起)</li><li>Firefox(版本帝伤不起)</li><li>Opera(版本帝伤不起)</li><li>Internet Explorer(10及以上)</li><li>国产逗比浏览器不保证正常使用</li></ul>",
+                        padding: "0px 25px 0 0"
+                    });
+                });
+                $("#previewButtonA").preview({
+                    content: "preview.jpg",
+                    type: "img",
+                    direction: "top"
+                });
+                $("#previewButtonB").preview({
+                    content: "这是一首简单的小情歌 唱着我们心头的曲折"
+                });
+                $("#licenseA").bind("click", function () {
+                    $("#licenseDIV").dialog({
+                        title: "GNU LESSER GENERAL PUBLIC LICENSE"
+                    });
+                });
+                $("#lastA").bind("click", function () {
+                    $.dialog({
+                        title: "联系作者",
+                        content: "【E-Mail】<br/>　　zl2005xyz@126.com<br/>　　zl2012xyz@hotmail.com",
+                        size: {
+                            width: 180
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

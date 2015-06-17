@@ -1,0 +1,111 @@
+/**
+ * ZLDialog 1.3.0
+ * Date: 2013-12-13
+ * © 2013 智能小菜菜
+ * This is licensed under the GNU LGPL, version 3 or later.
+ * For details, see: http://www.gnu.org/licenses/lgpl.html
+ */
+.dialogLock {
+	display: none;
+	top: 0;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	z-index: 900000;
+}
+
+.ZLDialog {
+	font-size: 90%;
+	display: none;
+	background: #FFFFFF;
+	z-index: 900000;
+	position: fixed;
+	border-radius: 5px;
+	display: none;
+	box-shadow: 2px 2px 5px #333333;
+	border:solid 1px #AAAAAA;
+}
+
+.ZLDialog .dialogTitleDIV {
+	cursor: move;
+	background: #CCCCCC;
+	height: 25px;
+	white-space: nowrap;
+	width: 100%;
+	border-radius: 5px 5px 0 0;
+}
+
+.ZLDialog .dialogTitleDIV .dialogTitleSpan {
+	color: #000000;
+	padding-left: 5px;
+	line-height: 25px;
+	width: 100%;
+}
+
+.ZLDialog .dialogTitleDIV .dialogTitleClose {
+	color: #000000;
+	cursor: pointer;
+	position: absolute;
+	right: 5px;
+	top: 3.5px;
+	padding: 0 5px;
+	line-height:18px;
+	cursor: pointer;
+}
+
+.ZLDialog .dialogTitleDIV .dialogTitleClose:hover {
+	color: #FFFFFF;
+	background:#555555;
+}
+
+.ZLDialog .dialogBody {
+	padding: 10px 20px;
+	overflow: auto;
+}
+
+.ZLDialog .dialogBody .dialogMsgSpan {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.ZLDialog .dialogFoot {
+	background: #EFEFEF;
+	text-align: center;
+	padding: 5px 0 5px 5px;
+	white-space: nowrap;
+	border-radius: 0 0 5px 5px;
+}
+
+.ZLDialog .dialogFoot a {
+	display: inline-block;
+	text-align: center;
+	line-height: 26px;
+	padding:0 10px;
+	cursor: pointer;
+	color: #FFFFFF;
+	height: 26px;
+	border: 1px solid #00487A;
+	background: url("../img/button.gif") repeat-x;
+	margin-right: 5px;
+	border-radius: 3px;
+}
+
+.ZLDialog .dialogFoot a:hover {
+	border: 1px solid #272727;
+	background: url("../img/altbutton.gif") repeat-x;
+}
+
+.ZLDialog_panel {
+	display: none;
+	z-index: 9000000;
+	background: #FFFFFF;
+	border-top: 1px solid #AAAAAA;
+	border-right: 2px solid #AAAAAA;
+	border-bottom: 2px solid #AAAAAA;
+	border-left: 1px solid #AAAAAA;
+	position: absolute;
+}
