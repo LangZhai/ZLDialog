@@ -1,11 +1,16 @@
 /**
- * ZLDialog 1.3.1
- * Date: 2014-02-28
- * © 2013-2014 智能小菜菜
+ * ZLDialog 1.3.4
+ * Date: 2015-11-26
+ * © 2013-2015 智能小菜菜
  * This is licensed under the GNU LGPL, version 3 or later.
  * For details, see: http://www.gnu.org/licenses/lgpl.html
  *
  * ==========更新历史==========
+ * -2015-11-26    1.3.4-
+ *   1.【Debug】修复加载外部链接size参数设置失效的BUG；
+ *   2.【Update】为size参数增加'full'值，修改padding参数'iframe'值功能；
+ *   3.【Update】清理冗余代码。
+ *
  * -2014-02-28    1.3.1-
  *   1.【Debug】修复IE11中外部链接加载崩溃BUG。（解决方法为换用1.11.0版jQuery，如在其他jQuery版本中发现加载BUG请设置inFrame:true）
  *
@@ -76,13 +81,6 @@
  */
 
 (function ($) {
-
-    $(function () {
-        $(document).mouseup(function () {
-            $(this).unbind('mousemove');
-        });
-    });
-
     /**
      * 显示对话框
      * @param  option  {Object}    对话框参数列表
@@ -102,21 +100,36 @@
 	 * });
      */
     $.dialog = function (option) {
-        var $body = $('body'),
+        var $window = $(window),
+            $body = $('body'),
             $ZLDialog,
             $dialogLock,
             $dialogTitleDIV,
             $dialogBody,
             $dialogFoot,
-            close,
-            closeDialog,
             $btn,
-            offsetInterval = setInterval(function () {
-                $ZLDialog.css({
-                    left: $(window).width() / 2 - $ZLDialog.width() / 2,
-                    top: $(window).height() / 2 - $ZLDialog.height() / 2
+            timeout,
+            interval,
+            closeDialog = function () {
+                clearTimeout(timeout);
+                interval = setInterval(function () {
+                    $ZLDialog.css({
+                        left: $window.width() / 2 - $ZLDialog.width() / 2,
+                        top: $window.height() / 2 - $ZLDialog.height() / 2
+                    });
+                }, 10);
+                if ($dialogLock) {
+                    $dialogLock.fadeOut(200);
+                }
+                $ZLDialog.hide(200, function () {
+                    if (option.closeBack) {
+                        option.closeBack();
+                    }
+                    clearInterval(interval);
+                    $ZLDialog.remove();
+                    $window.off('resize.dialog');
                 });
-            }, 10);
+            };
         if (option.message) {
             $ZLDialog = $('<div class=\'ZLDialog\'><div class=\'dialogBody\'></div></div>');
             $dialogBody = $ZLDialog.children('.dialogBody:first');
@@ -125,25 +138,39 @@
             $dialogTitleDIV = $ZLDialog.children('.dialogTitleDIV:first');
             $dialogBody = $ZLDialog.children('.dialogBody:first');
             $dialogFoot = $ZLDialog.children('.dialogFoot:first');
-            if (option.title)
+            $dialogTitleDIV.children('.dialogTitleClose:first').on('click.dialog', closeDialog);
+            if (option.title) {
                 $dialogTitleDIV.children('.dialogTitleSpan:first').html(option.title);
-            if (option.hideX)
+            }
+            if (option.hideX) {
                 $dialogTitleDIV.children('.dialogTitleClose:first').remove();
-            if (option.size)
-                $dialogBody.width(option.size.width).height(option.size.height);
+            }
+            if (option.size) {
+                $ZLDialog.width(option.size.width);
+                $dialogBody.height(option.size.height);
+                if (option.size == 'full') {
+                    $ZLDialog.width(Number.MAX_VALUE);
+                    $dialogBody.height(Number.MAX_VALUE);
+                } else {
+                    $ZLDialog.width(option.size.width);
+                    $dialogBody.height(option.size.height);
+                }
+            }
             if (option.drag == undefined || option.drag) {
-                $dialogTitleDIV.mousedown(function (e) {
-                    var width = $(window).width() - $ZLDialog.width(),
-                        height = $(window).height() - $ZLDialog.height(),
+                $dialogTitleDIV.on('mousedown.dialog', function (e) {
+                    var width = $window.width() - $ZLDialog.width(),
+                        height = $window.height() - $ZLDialog.height(),
                         offset = $ZLDialog.offset(),
                         pageXY = {
                             left: e.pageX,
                             top: e.pageY
                         }, scrollXY = {
-                            left: $(window).scrollLeft(),
-                            top: $(window).scrollTop()
+                            left: $window.scrollLeft(),
+                            top: $window.scrollTop()
                         };
-                    $(document).mousemove(function (e) {
+                    $body.off('mouseup.dialog').on('mouseup.dialog', function () {
+                        $body.off('mousemove.dialog');
+                    }).on('mousemove.dialog', function (e) {
                         var left = e.pageX - pageXY.left + offset.left,
                             top = e.pageY - pageXY.top + offset.top;
                         left = left - scrollXY.left < 0 ? scrollXY.left : left - scrollXY.left > width ? width + scrollXY.left : left;
@@ -156,110 +183,78 @@
                 });
             }
         }
-        closeDialog = function () {
-            var deviation = $ZLDialog.offset().top - $(window).scrollTop() - ($(window).height() / 2 - $ZLDialog.height() / 2);
-            $('body').css('overflow', 'auto');
-            offsetInterval = setInterval(function () {
-                $ZLDialog.css({
-                    top: $(window).height() / 2 - $ZLDialog.height() / 2 + deviation
-                });
-            }, 10);
-            $ZLDialog.slideUp(200, function () {
-                if (option.closeBack)
-                    option.closeBack();
-                $(this).remove();
-                clearInterval(offsetInterval);
-                $(window).unbind('resize');
-            });
-            if ($dialogLock) {
-                $dialogLock.fadeOut(200, function () {
-                    $(this).remove();
-                });
-            }
-        };
         if (option.content) {
             $dialogBody.html(option.content);
             $('img', $dialogBody).each(function () {
-                $(this).load(function () {
-                    $(window).resize();
+                $(this).on('load.dialog', function () {
+                    $window.triggerHandler('resize.dialog');
                 });
             });
         }
-        if (option.timeout)
-            close = setTimeout(closeDialog, option.timeout);
         if (option.lock == undefined || option.lock) {
             $dialogLock = $('<div class=\'dialogLock\'></div>').appendTo($body);
-            $body.css('overflow', 'hidden');
         }
         if (option.padding) {
             if (option.padding == 'iframe') {
-                $ZLDialog.width($(window).width() - 50);
-                $dialogBody.height($(window).height() - $dialogTitleDIV.height() - $dialogFoot.height() - 50).css('overflow', 'hidden');
+                $dialogBody.css({
+                    padding: 0,
+                    overflow: 'hidden'
+                });
+            } else {
+                $dialogBody.css({
+                    padding: option.padding
+                });
             }
-            $dialogBody.css({
-                'padding': option.padding == 'iframe' ? 0 : option.padding
-            });
         }
-        if ($dialogLock)
-            $dialogLock.fadeTo(200, 0.3);
         if (option.buttons) {
             $.each(option.buttons, function (i, btn) {
                 $btn = $('<a>' + btn.text + '</a>');
                 $dialogFoot.append($btn);
-                if (typeof (btn.callback) == Function)
-                    $btn.click(btn.callback);
-                else if (!btn.callback)
-                    $btn.click(closeDialog);
-                else
-                    $btn.click(eval(btn.callback));
+                if (typeof (btn.callback) == Function) {
+                    $btn.on('click.dialog', btn.callback);
+                }
+                else if (!btn.callback) {
+                    $btn.on('click.dialog', closeDialog);
+                }
+                else {
+                    $btn.on('click.dialog', eval(btn.callback));
+                }
             });
         }
-        $ZLDialog.appendTo($body).css({
-            width: $ZLDialog.width(),
-            left: -10000,
-            top: -10000
-        }).slideDown(200, function () {
-            if (option.message)
-                $dialogBody.css('max-height', $(window).height() - 50 - parseFloat($dialogBody.css('padding-top') == 'auto' ? 0 : $dialogBody.css('padding-top')) - parseFloat($dialogBody.css('padding-bottom') == 'auto' ? 0 : $dialogBody.css('padding-bottom')));
-            else
-                $dialogBody.css('max-height', $(window).height() - $dialogTitleDIV.height() - $dialogFoot.height() - 50 - parseFloat($dialogBody.css('padding-top') == 'auto' ? 0 : $dialogBody.css('padding-top')) - parseFloat($dialogBody.css('padding-bottom') == 'auto' ? 0 : $dialogBody.css('padding-bottom')));
-            $ZLDialog.css('max-width', $(window).width() - 50);
-            if (option.showBack)
-                option.showBack();
-            setTimeout(function () {
-                clearInterval(offsetInterval);
-            }, 50);
-            if (option.padding == 'iframe') {
-                $(window).resize(function () {
-                    var width = $(window).width() - 50;
-                    $dialogBody.stop(true).animate({
-                        height: $(window).height() - $dialogTitleDIV.height() - $dialogFoot.height() - 50 - parseFloat($dialogBody.css('padding-top') == 'auto' ? 0 : $dialogBody.css('padding-top')) - parseFloat($dialogBody.css('padding-bottom') == 'auto' ? 0 : $dialogBody.css('padding-bottom'))
-                    }, 200);
-                    $ZLDialog.stop(true).animate({
-                        width: width,
-                        left: $(window).width() / 2 - width / 2,
-                        top: $(window).height() / 2 - ($(window).height() - 35) / 2
-                    }, 200);
-                });
-            } else {
-                $(window).resize(function () {
-                    clearTimeout(close);
-                    if (option.message)
-                        $dialogBody.css('max-height', $(window).height() - 50 - parseFloat($dialogBody.css('padding-top') == 'auto' ? 0 : $dialogBody.css('padding-top')) - parseFloat($dialogBody.css('padding-bottom') == 'auto' ? 0 : $dialogBody.css('padding-bottom')));
-                    else
-                        $dialogBody.css('max-height', $(window).height() - $dialogTitleDIV.height() - $dialogFoot.height() - 50 - parseFloat($dialogBody.css('padding-top') == 'auto' ? 0 : $dialogBody.css('padding-top')) - parseFloat($dialogBody.css('padding-bottom') == 'auto' ? 0 : $dialogBody.css('padding-bottom')));
-                    $ZLDialog.css('max-width', $(window).width() - 50);
-                    $ZLDialog.stop(true).animate({
-                        left: $(window).width() / 2 - $ZLDialog.width() / 2,
-                        top: $(window).height() / 2 - $ZLDialog.height() / 2
-                    }, 200);
-                    if (option.timeout)
-                        close = setTimeout(closeDialog, option.timeout);
-                });
+        $window.on('resize.dialog', function () {
+            var width = $window.width() - 50,
+                height = $window.height() - 50;
+            if ($dialogTitleDIV) {
+                $dialogBody.css('max-height', height - $dialogTitleDIV.outerHeight(true) - $dialogFoot.outerHeight(true));
             }
-        }).focus();
-        if (!option.message)
-            $dialogTitleDIV.children('.dialogTitleClose:first').click(closeDialog);
+            else {
+                $dialogBody.css('max-height', height);
+            }
+            $ZLDialog.css('max-width', width).stop(true).animate({
+                left: $window.width() / 2 - $ZLDialog.width() / 2,
+                top: $window.height() / 2 - $ZLDialog.height() / 2
+            }, 200);
+        });
+        $ZLDialog.appendTo($body);
+        $window.triggerHandler('resize.dialog');
+        interval = setInterval(function () {
+            $ZLDialog.css({
+                left: $window.width() / 2 - $ZLDialog.width() / 2,
+                top: $window.height() / 2 - $ZLDialog.height() / 2
+            });
+        }, 10);
+        if ($dialogLock) {
+            $dialogLock.fadeIn(200);
+        }
+        $ZLDialog.show(200, function () {
+            if (option.showBack) {
+                option.showBack();
+            }
+            if (option.timeout) {
+                timeout = setTimeout(closeDialog, option.timeout);
+            }
+            clearInterval(interval);
+        });
         return closeDialog;
     };
 
@@ -283,10 +278,12 @@
         option.size = null;
         option.drag = null;
         option.padding = null;
-        if (option.timeout == null)
+        if (option.timeout == null) {
             option.timeout = 2000;
-        if (option.lock == null)
+        }
+        if (option.lock == null) {
             option.lock = false;
+        }
         option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '<span/>';
         return $.dialog(option);
     };
@@ -310,10 +307,12 @@
      */
     $.dialog.alert = function (option) {
         option.message = null;
-        if (option.title == null)
+        if (option.title == null) {
             option.title = '提示';
-        if (option.hideX == null)
+        }
+        if (option.hideX == null) {
             option.hideX = true;
+        }
         option.buttons = [
             {
                 text: '确定'
@@ -344,12 +343,15 @@
      */
     $.dialog.confirm = function (option, yes, no) {
         option.message = null;
-        if (option.title == null)
+        if (option.title == null) {
             option.title = '提示';
-        if (option.content == null)
+        }
+        if (option.content == null) {
             option.content = '确认操作吗？';
-        if (option.hideX == null)
+        }
+        if (option.hideX == null) {
             option.hideX = true;
+        }
         option.buttons = [
             {
                 text: '确定',
@@ -385,8 +387,9 @@
      */
     $.dialog.open = function (option) {
         option.message = null;
-        if (option.inFrame == null)
+        if (option.inFrame == null) {
             option.inFrame = false;
+        }
         if (option.inFrame) {
             option.content = '<iframe frameborder=\'no\' src=\'' + option.url + '\' style=\'border:none;width:100%;height:100%\'></iframe>';
             option.padding = 'iframe';
@@ -450,95 +453,106 @@
             var $this = $(this),
                 $panel = $('<div class=\'ZLDialog_panel\'></div>'),
                 timeout;
-            if (option.direction == undefined)
+            if (option.direction == undefined) {
                 option.direction = 'right';
-            if (option.padding == undefined)
+            }
+            if (option.padding == undefined) {
                 option.padding = 10;
+            }
             if (option.content) {
                 if (option.type) {
                     if (option.type == 'img') {
-                        if (option.size)
+                        if (option.size) {
                             $panel.html('<img style=\'' + (option.size.width ? 'max-width:' + option.size.width + 'px;' : '') + (option.size.height ? 'max-height:' + option.size.height + 'px;' : '') + '\' src=\'' + option.content + '\' />');
-                        else
+                        }
+                        else {
                             $panel.html('<img src=\'' + option.content + '\' />');
+                        }
                         option.padding = 0;
-                    } else
+                    } else {
                         $panel.html(option.content);
-                } else
+                    }
+                } else {
                     $panel.html(option.content);
+                }
             }
             if (option.timeout) {
                 setTimeout(function () {
                     $panel.fadeOut(function () {
-                        if (option.closeBack)
+                        if (option.closeBack) {
                             option.closeBack();
-                        $(this).remove();
+                        }
+                        $panel.remove();
                     });
                 }, option.timeout);
             }
-            if (option.type != 'img' && option.size)
+            if (option.type != 'img' && option.size) {
                 $panel.width(option.size.width).height(option.size.height);
+            }
             $panel.css({
                 'padding': option.padding
             });
-            $this.hover(function () {
+            $this.on('mouseover.dialog', function () {
                 clearTimeout(timeout);
                 $panel.appendTo($('body')).css({
                     position: 'absolute'
                 }).fadeIn(function () {
-                    if (option.showBack)
+                    if (option.showBack) {
                         option.showBack();
+                    }
                 });
                 if (option.direction == 'top' || option.direction == 'bottom') {
                     $panel.offset({
-                        left: $this.offset().left + ($this.outerWidth() - $panel.outerWidth()) / 2
+                        left: $this.offset().left + ($this.outerWidth(true) - $panel.outerWidth(true)) / 2
                     });
                     if (option.direction == 'top') {
                         $panel.offset({
-                            top: $this.offset().top - $panel.outerHeight() - 5
+                            top: $this.offset().top - $panel.outerHeight(true) - 5
                         });
                     } else {
                         $panel.offset({
-                            top: $this.offset().top + $this.outerHeight() + 5
+                            top: $this.offset().top + $this.outerHeight(true) + 5
                         });
                     }
                 } else {
                     $panel.offset({
-                        top: $this.offset().top + ($this.outerHeight() - $panel.outerHeight()) / 2
+                        top: $this.offset().top + ($this.outerHeight(true) - $panel.outerHeight(true)) / 2
                     });
                     if (option.direction == 'left') {
                         $panel.offset({
-                            left: $this.offset().left - $panel.outerWidth() - 5
+                            left: $this.offset().left - $panel.outerWidth(true) - 5
                         });
                     } else {
                         $panel.offset({
-                            left: $this.offset().left + $this.outerWidth() + 5
+                            left: $this.offset().left + $this.outerWidth(true) + 5
                         });
                     }
                 }
-                if (option.type == 'img')
+                if (option.type == 'img') {
                     $panel.height($panel.children().height());
-            }, function () {
+                }
+            }).on('mouseout.dialog', function () {
                 timeout = setTimeout(function () {
                     $panel.fadeOut(function () {
-                        if (option.closeBack)
+                        if (option.closeBack) {
                             option.closeBack();
-                        $(this).remove();
+                        }
+                        $panel.remove();
                     });
                 }, option.timeout);
-                $panel.hover(function () {
+                $panel.on('mouseover.dialog', function () {
                     clearTimeout(timeout);
-                }, function () {
+                }).on('mouseout.dialog', function () {
                     timeout = setTimeout(function () {
                         $panel.fadeOut(function () {
-                            if (option.closeBack)
+                            if (option.closeBack) {
                                 option.closeBack();
-                            $(this).remove();
+                            }
+                            $panel.remove();
                         });
                     }, option.timeout);
                 });
             });
         });
     };
-
 })($);

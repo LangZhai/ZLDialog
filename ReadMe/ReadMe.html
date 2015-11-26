@@ -3,11 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="description" content="ZLDialog是一款由智能小菜菜开发的基于jQuery的弹窗插件。" />
-        <meta name="keywords" content="ZLDialog,JS插件,前端开发,智能小菜菜,SmartCai,SmartOtaku" />
-        <link rel="icon" href="http://smartotaku.me/favicon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="http://smartotaku.me/favicon.ico" type="image/x-icon" />
+        <meta name="keywords" content="ZLDialog,JS插件,前端开发,智能小菜菜,SmartCai" />
         <link rel="stylesheet" type="text/css" href="blackboard.css" />
-        <link rel="stylesheet" type="text/css" href="../css/ZLDialog.css" />
+        <link rel="stylesheet" type="text/css" href="../css/ZLDialog.min.css" />
         <title>ZLDialog-ReadMe</title>
         <style type="text/css">
             body {
@@ -172,8 +170,8 @@
         <div id="contentDIV">
             <div id="headDIV" class="textRight">
                 <h1>ZLDialog</h1>
-                <h4>V 1.3.1</h4>
-                <h5>build 2014.02.28</h5>
+                <h4>V 1.3.4</h4>
+                <h5>build 2015.11.26</h5>
             </div>
             <ul id="menuUL">
                 <li class="current">初识我</li>
@@ -188,9 +186,9 @@
                         <h2>我是什么？</h2>
                         <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件，压缩后只有5KB哦！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
                         <button id="firstHello">手贱点一下！</button>
-                        <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:;" id="firstTX">@智能小菜菜</a>！！！
+                        <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:" id="firstTX">@智能小菜菜</a>！！！
                         </p>
-                        <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:;" id="browser">更现代的浏览器</a>吧！
+                        <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:" id="browser">更现代的浏览器</a>吧！
                         </p>
                         <p>啊对了，顺便提一嘴，欢迎大家为我设计新的皮肤哦O(∩_∩)O~~</p>
                     </div>
@@ -264,16 +262,24 @@ $.dialog({
                         <p>所以你看，我是不是很好调教呢？接下来换点别的吧，比如让我加载一个外部链接试试！</p>
 <pre data-language="javascript">
 $.dialog.open({
-  title:"百度搜索",
+  title:"博客园",
   inFrame:true,
-  url:"http://www.baidu.com"
+  size:{
+    width:1024,
+    height:768
+  },
+  url:"http://www.cnblogs.com/"
 });
 </pre>
                         <div class="hidden">
                             $.dialog.open({
-                            title:"百度搜索",
+                            title:"博客园",
                             inFrame:true,
-                            url:"http://www.baidu.com"
+                            size:{
+                            width:1024,
+                            height:768
+                            },
+                            url:"http://www.cnblogs.com/"
                             });
                         </div>
                         <button class="doJS">加载！</button>
@@ -352,7 +358,7 @@ $("#previewButtonB").preview({
                                 <td>title</td>
                                 <td>对话框标题</td>
                                 <td>字符</td>
-                                <td>"对话框"</td>
+                                <td>'对话框'</td>
                             </tr>
                             <tr>
                                 <td>content</td>
@@ -402,7 +408,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>size</td>
                                 <td>对话框大小</td>
-                                <td>对象
+                                <td>对象|'full'
                                     <table class="attrTable" border="1">
                                         <tr>
                                             <th>参数名</th>
@@ -453,7 +459,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>padding</td>
                                 <td>对话框内容padding</td>
-                                <td>字符（写法同CSS）</td>
+                                <td>字符（写法同CSS）|'iframe'</td>
                                 <td>null</td>
                             </tr>
                             <tr>
@@ -508,7 +514,7 @@ $("#previewButtonB").preview({
                                 <td>title</td>
                                 <td>警告框标题</td>
                                 <td>字符</td>
-                                <td>"提示"</td>
+                                <td>'提示'</td>
                             </tr>
                             <tr>
                                 <td>content</td>
@@ -531,7 +537,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>size</td>
                                 <td>警告框大小</td>
-                                <td>对象
+                                <td>对象|'full'
                                     <table class="attrTable" border="1">
                                         <tr>
                                             <th>参数名</th>
@@ -582,7 +588,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>padding</td>
                                 <td>警告框内容padding</td>
-                                <td>字符（写法同CSS）</td>
+                                <td>字符（写法同CSS）|'iframe'</td>
                                 <td>null</td>
                             </tr>
                             <tr>
@@ -598,7 +604,7 @@ $("#previewButtonB").preview({
                                 <td>title</td>
                                 <td>警告框标题</td>
                                 <td>字符</td>
-                                <td>"对话框"</td>
+                                <td>'对话框'</td>
                             </tr>
                             <tr>
                                 <td>content</td>
@@ -621,7 +627,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>size</td>
                                 <td>警告框大小</td>
-                                <td>对象
+                                <td>对象|'full'
                                     <table class="attrTable" border="1">
                                         <tr>
                                             <th>参数名</th>
@@ -672,7 +678,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>padding</td>
                                 <td>警告框内容padding</td>
-                                <td>字符（写法同CSS）</td>
+                                <td>字符（写法同CSS）|'iframe'</td>
                                 <td>null</td>
                             </tr>
                             <tr>
@@ -697,7 +703,7 @@ $("#previewButtonB").preview({
                                 <td>title</td>
                                 <td>对话框标题</td>
                                 <td>字符</td>
-                                <td>"对话框"</td>
+                                <td>'对话框'</td>
                             </tr>
                             <tr>
                                 <td>content</td>
@@ -747,7 +753,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>size</td>
                                 <td>对话框大小</td>
-                                <td>对象
+                                <td>对象|'full'
                                     <table class="attrTable" border="1">
                                         <tr>
                                             <th>参数名</th>
@@ -798,7 +804,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>padding</td>
                                 <td>对话框内容padding</td>
-                                <td>字符（写法同CSS）</td>
+                                <td>字符（写法同CSS）|'iframe'</td>
                                 <td>null</td>
                             </tr>
                             <tr>
@@ -820,7 +826,7 @@ $("#previewButtonB").preview({
                                 <td>title</td>
                                 <td>对话框标题</td>
                                 <td>字符</td>
-                                <td>"对话框"</td>
+                                <td>'对话框'</td>
                             </tr>
                             <tr>
                                 <td>hideX</td>
@@ -864,7 +870,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>size</td>
                                 <td>对话框大小</td>
-                                <td>对象
+                                <td>对象|'full'
                                     <table class="attrTable" border="1">
                                         <tr>
                                             <th>参数名</th>
@@ -915,7 +921,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>padding</td>
                                 <td>对话框内容padding</td>
-                                <td>字符（写法同CSS）</td>
+                                <td>字符（写法同CSS）|'iframe'</td>
                                 <td>null</td>
                             </tr>
                             <tr>
@@ -936,7 +942,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>type</td>
                                 <td>预览类型</td>
-                                <td>字符（限选"img"）</td>
+                                <td>字符（限选'img'）</td>
                                 <td>null</td>
                             </tr>
                             <tr>
@@ -988,13 +994,13 @@ $("#previewButtonB").preview({
                                 <td>padding</td>
                                 <td>预览面板内容padding</td>
                                 <td>字符（写法同CSS）</td>
-                                <td>"10px"（type为"img"时）</td>
+                                <td>'10px'（type为'img'时）</td>
                             </tr>
                             <tr>
                                 <td>direction</td>
                                 <td>预览面板依附位置</td>
-                                <td>字符（限选"top"、"right"、"bottom"、"left"）</td>
-                                <td>"right"</td>
+                                <td>字符（限选'top'、'right'、'bottom'、'left'）</td>
+                                <td>'right'</td>
                             </tr>
                             <tr>
                         </table>
@@ -1017,6 +1023,11 @@ $.dialog.message({
                         <p>据说是为了满足某人的项目开发以及学习研究需要才诞生的。【所以不得不吐槽一下这皮肤真的让人家很不舒服呢！(╯﹏╰）】</p>
                         <h2>我的成长</h2>
                         <p>
+                            &nbsp;-2015-11-26&nbsp;&nbsp;&nbsp;&nbsp;1.3.4-<br />
+                            &nbsp;&nbsp;1.【Debug】修复加载外部链接size参数设置失效的BUG；<br />
+                            &nbsp;&nbsp;2.【Update】为size参数增加'full'值，修改padding参数'iframe'值功能；<br />
+                            &nbsp;&nbsp;3.【Update】清理冗余代码。<br />
+                            <br />
                             &nbsp;-2014-02-28&nbsp;&nbsp;&nbsp;&nbsp;1.3.1-<br />
                             &nbsp;&nbsp;1.【Debug】修复IE11中外部链接加载崩溃BUG。（解决方法为换用1.11.0版jQuery，如在其他jQuery版本中发现加载BUG请设置inFrame:true）<br />
                             <br />
@@ -1090,150 +1101,116 @@ $.dialog.message({
                         <p>
                             好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在53kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
 							-->直男【讲这么多废话是要闹甚！！！不会有妹子看上你的魂淡！！！】，因为看到某篇文章说<!--
-							--><a href="javascript:;" onclick="$.dialog.open({title:'不定义JQuery插件，不要说会JQuery',url:'http://www.cnblogs.com/xcj26/p/3345556.html'});">“不定义JQuery插件，不要说会JQuery”</a><!--
+							--><a href="javascript:" onclick="$.dialog.open({title:'不定义JQuery插件，不要说会JQuery',url:'http://www.cnblogs.com/xcj26/p/3345556.html'});">“不定义JQuery插件，不要说会JQuery”</a><!--
 							-->，再加上确实也是项目需要因此就诞生了这货嗯。嘛，其实我也知道这皮肤真心丑爆，但是确实是没什么时间，并且我们看人不应该只看外表，看待一款插件也应该是这样嗯【分明是在找借口啊喂！】。于是<!--
 							-->觉得这货还算好用的老爷们，不妨为这货设计几款看得过去的皮肤，在这里替这货谢谢各位了！！！
                         </p>
                         <p>
-                            啊，对了，通常来讲这里应该留下联系方式对吧，于是我也勇敢地<a href="javascript:;" id="lastA">来一发！！！</a>
+                            啊，对了，通常来讲这里应该留下联系方式对吧，于是我也勇敢地<a href="javascript:" id="lastA">来一发！！！</a>
                         </p>
                     </div>
                     <div class="hidden">
-                        <h2><a href="http:/zldialog.smartotaku.me/ZLDialog-1.3.1.rar" target="_blank">本站下载（只提供最新版链接，如需旧版请移步网盘下载）</a></h2>
-                        <h2><a href="http://pan.baidu.com/s/1c0CKr7q" target="_blank">网盘下载</a></h2>
+                        <h2><a href="https://github.com/langzhai/zldialog" target="_blank">GitHub</a></h2>
                     </div>
                 </div>
             </div>
             <div id="footDIV">
-                <div><a title="smartotaku.me" href="http://smartotaku.me" target="_blank"><img src="http://smartotaku.me/favicon.ico" /></a></div>
-                <h4>© 2013-2014 智能小菜菜
-                    <script type="text/javascript">
-                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa883b86afd83a720b271fda07c3937f2' type='text/javascript'%3E%3C/script%3E"));
-                    </script>
-                </h4>
-                <h5>本插件基于<a href="javascript:;" id="licenseA">LGPL开源协议</a>开发，欢迎一切非商业/商业目的使用。</h5>
+                <h4>© 2013-2015 智能小菜菜</h4>
+                <h5>本插件基于<a href="javascript:" id="licenseA">LGPL开源协议</a>开发，欢迎一切非商业/商业目的使用。</h5>
             </div>
         </div>
-
         <div id="testDIV" class="hidden">
             <form action="http://www.baidu.com/s" target="_blank">
                 关键字　<input type="text" name="wd" />
             </form>
         </div>
-
         <div id="licenseDIV" class="hidden">
             <h3 style="text-align: center;">GNU LESSER GENERAL PUBLIC LICENSE</h3>
             <p style="text-align: center;">Version 3, 29 June 2007</p>
-
             <p>Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;</p><p>
-
             Everyone is permitted to copy and distribute verbatim copies
             of this license document, but changing it is not allowed.</p>
-
             <p>This version of the GNU Lesser General Public License incorporates
                 the terms and conditions of version 3 of the GNU General Public
                 License, supplemented by the additional permissions listed below.</p>
-
             <h4>0. Additional Definitions.</h4>
-
             <p>As used herein, “this License” refers to version 3 of the GNU Lesser
                 General Public License, and the “GNU GPL” refers to version 3 of the GNU
                 General Public License.</p>
-
             <p>“The Library” refers to a covered work governed by this License,
                 other than an Application or a Combined Work as defined below.</p>
-
             <p>An “Application” is any work that makes use of an interface provided
                 by the Library, but which is not otherwise based on the Library.
                 Defining a subclass of a class defined by the Library is deemed a mode
                 of using an interface provided by the Library.</p>
-
             <p>A “Combined Work” is a work produced by combining or linking an
                 Application with the Library. The particular version of the Library
                 with which the Combined Work was made is also called the “Linked
                 Version”.</p>
-
             <p>The “Minimal Corresponding Source” for a Combined Work means the
                 Corresponding Source for the Combined Work, excluding any source code
                 for portions of the Combined Work that, considered in isolation, are
                 based on the Application, and not on the Linked Version.</p>
-
             <p>The “Corresponding Application Code” for a Combined Work means the
                 object code and/or source code for the Application, including any data
                 and utility programs needed for reproducing the Combined Work from the
                 Application, but excluding the System Libraries of the Combined Work.</p>
-
             <h4>1. Exception to Section 3 of the GNU GPL.</h4>
-
             <p>You may convey a covered work under sections 3 and 4 of this License
                 without being bound by section 3 of the GNU GPL.</p>
-
             <h4>2. Conveying Modified Versions.</h4>
-
             <p>If you modify a copy of the Library, and, in your modifications, a
                 facility refers to a function or data to be supplied by an Application
                 that uses the facility (other than as an argument passed when the
                 facility is invoked), then you may convey a copy of the modified
                 version:</p>
-
             <ul>
                 <li>a) under this License, provided that you make a good faith effort to
                     ensure that, in the event an Application does not supply the
                     function or data, the facility still operates, and performs
                     whatever part of its purpose remains meaningful, or
                 </li>
-
                 <li>b) under the GNU GPL, with none of the additional permissions of
                     this License applicable to that copy.
                 </li>
             </ul>
             <h4>3. Object Code Incorporating Material from Library Header Files.
             </h4>
-
             <p>The object code form of an Application may incorporate material from
                 a header file that is part of the Library. You may convey such object
                 code under terms of your choice, provided that, if the incorporated
                 material is not limited to numerical parameters, data structure
                 layouts and accessors, or small macros, inline functions and templates
                 (ten or fewer lines in length), you do both of the following:</p>
-
             <ul>
                 <li>a) Give prominent notice with each copy of the object code that the
                     Library is used in it and that the Library and its use are
                     covered by this License.
                 </li>
-
                 <li>b) Accompany the object code with a copy of the GNU GPL and this license
                     document.
                 </li>
             </ul>
             <h4>4. Combined Works.</h4>
-
             <p>You may convey a Combined Work under terms of your choice that,
                 taken together, effectively do not restrict modification of the
                 portions of the Library contained in the Combined Work and reverse
                 engineering for debugging such modifications, if you also do each of
                 the following:</p>
-
             <ul>
                 <li>a) Give prominent notice with each copy of the Combined Work that
                     the Library is used in it and that the Library and its use are
                     covered by this License.
                 </li>
-
                 <li>b) Accompany the Combined Work with a copy of the GNU GPL and this license
                     document.
                 </li>
-
                 <li>c) For a Combined Work that displays copyright notices during
                     execution, include the copyright notice for the Library among
                     these notices, as well as a reference directing the user to the
                     copies of the GNU GPL and this license document.
                 </li>
-
                 <li>d) Do one of the following:
-
                     <ul>
                         <li>0) Convey the Minimal Corresponding Source under the terms of this
                             License, and the Corresponding Application Code in a form
@@ -1243,7 +1220,6 @@ $.dialog.message({
                             manner specified by section 6 of the GNU GPL for conveying
                             Corresponding Source.
                         </li>
-
                         <li>1) Use a suitable shared library mechanism for linking with the
                             Library. A suitable mechanism is one that (a) uses at run time
                             a copy of the Library already present on the user's computer
@@ -1251,10 +1227,8 @@ $.dialog.message({
                             of the Library that is interface-compatible with the Linked
                             Version.
                         </li>
-
                     </ul>
                 </li>
-
                 <li>e) Provide Installation Information, but only if you would otherwise
                     be required to provide such information under section 6 of the
                     GNU GPL, and only to the extent that such information is
@@ -1269,32 +1243,26 @@ $.dialog.message({
                 </li>
             </ul>
             <h4>5. Combined Libraries.</h4>
-
             <p>You may place library facilities that are a work based on the
                 Library side by side in a single library together with other library
                 facilities that are not Applications and are not covered by this
                 License, and convey such a combined library under terms of your
                 choice, if you do both of the following:</p>
-
             <ul>
                 <li>a) Accompany the combined library with a copy of the same work based
                     on the Library, uncombined with any other library facilities,
                     conveyed under the terms of this License.
                 </li>
-
                 <li>b) Give prominent notice with the combined library that part of it
                     is a work based on the Library, and explaining where to find the
                     accompanying uncombined form of the same work.
                 </li>
-
             </ul>
             <h4>6. Revised Versions of the GNU Lesser General Public License.</h4>
-
             <p>The Free Software Foundation may publish revised and/or new versions
                 of the GNU Lesser General Public License from time to time. Such new
                 versions will be similar in spirit to the present version, but may
                 differ in detail to address new problems or concerns.</p>
-
             <p>Each version is given a distinguishing version number. If the
                 Library as you received it specifies that a certain numbered version
                 of the GNU Lesser General Public License “or any later version”
@@ -1304,15 +1272,13 @@ $.dialog.message({
                 received it does not specify a version number of the GNU Lesser
                 General Public License, you may choose any version of the GNU Lesser
                 General Public License ever published by the Free Software Foundation.</p>
-
             <p>If the Library as you received it specifies that a proxy can decide
                 whether future versions of the GNU Lesser General Public License shall
                 apply, that proxy's public statement of acceptance of any version is
                 permanent authorization for you to choose that version for the
                 Library.</p>
         </div>
-
-        <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="rainbow-custom.min.js"></script>
         <script type="text/javascript" src="../js/ZLDialog.min.js"></script>
         <script type="text/javascript">
