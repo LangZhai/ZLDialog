@@ -1,11 +1,18 @@
 /**
- * ZLDialog 1.3.4
- * Date: 2015-11-26
+ * ZLDialog 1.3.9
+ * Date: 2015-12-04
  * © 2013-2015 智能小菜菜
  * This is licensed under the GNU LGPL, version 3 or later.
  * For details, see: http://www.gnu.org/licenses/lgpl.html
  *
  * ==========更新历史==========
+ * -2015-12-04    1.3.9-
+ *   1.【Debug】修复显示对话框位置异常的BUG；
+ *   2.【Debug】修复关闭对话框时未删除遮罩层的BUG；
+ *   3.【Debug】修复size参数的'full'值在firefox中高度异常的BUG；
+ *   4.【Debug】修复多对话框实例下resize冲突的BUG；
+ *   5.【Debug】修复resize导致timeout/interval失效的BUG。
+ *
  * -2015-11-26    1.3.4-
  *   1.【Debug】修复加载外部链接size参数设置失效的BUG；
  *   2.【Update】为size参数增加'full'值，修改padding参数'iframe'值功能；
@@ -110,25 +117,34 @@
             $btn,
             timeout,
             interval,
+            id = new Date().getTime(),
             closeDialog = function () {
+                var deviation = {
+                    left: $ZLDialog.offset().left - $window.scrollLeft() - (($window.width() - $ZLDialog.width()) / 2),
+                    top: $ZLDialog.offset().top - $window.scrollTop() - (($window.height() - $ZLDialog.height()) / 2)
+                };
                 clearTimeout(timeout);
                 interval = setInterval(function () {
                     $ZLDialog.css({
-                        left: $window.width() / 2 - $ZLDialog.width() / 2,
-                        top: $window.height() / 2 - $ZLDialog.height() / 2
+                        left: ($window.width() - $ZLDialog.width()) / 2 + deviation.left,
+                        top: ($window.height() - $ZLDialog.height()) / 2 + deviation.top
                     });
                 }, 10);
                 if ($dialogLock) {
-                    $dialogLock.fadeOut(200);
+                    $dialogLock.fadeOut(200, function () {
+                        $dialogLock.remove();
+                    });
                 }
-                $ZLDialog.hide(200, function () {
-                    if (option.closeBack) {
-                        option.closeBack();
-                    }
-                    clearInterval(interval);
-                    $ZLDialog.remove();
-                    $window.off('resize.dialog');
-                });
+                setTimeout(function () {
+                    $ZLDialog.hide(200, function () {
+                        if (option.closeBack) {
+                            option.closeBack();
+                        }
+                        clearInterval(interval);
+                        $ZLDialog.remove();
+                        $window.off('resize.dialog' + id);
+                    });
+                }, 0);
             };
         if (option.message) {
             $ZLDialog = $('<div class=\'ZLDialog\'><div class=\'dialogBody\'></div></div>');
@@ -149,8 +165,8 @@
                 $ZLDialog.width(option.size.width);
                 $dialogBody.height(option.size.height);
                 if (option.size == 'full') {
-                    $ZLDialog.width(Number.MAX_VALUE);
-                    $dialogBody.height(Number.MAX_VALUE);
+                    $ZLDialog.width(9999);
+                    $dialogBody.height(9999);
                 } else {
                     $ZLDialog.width(option.size.width);
                     $dialogBody.height(option.size.height);
@@ -187,7 +203,7 @@
             $dialogBody.html(option.content);
             $('img', $dialogBody).each(function () {
                 $(this).on('load.dialog', function () {
-                    $window.triggerHandler('resize.dialog');
+                    $window.triggerHandler('resize.dialog' + id);
                 });
             });
         }
@@ -221,7 +237,7 @@
                 }
             });
         }
-        $window.on('resize.dialog', function () {
+        $window.on('resize.dialog' + id, function () {
             var width = $window.width() - 50,
                 height = $window.height() - 50;
             if ($dialogTitleDIV) {
@@ -230,31 +246,37 @@
             else {
                 $dialogBody.css('max-height', height);
             }
-            $ZLDialog.css('max-width', width).stop(true).animate({
-                left: $window.width() / 2 - $ZLDialog.width() / 2,
-                top: $window.height() / 2 - $ZLDialog.height() / 2
-            }, 200);
+            $ZLDialog.css('max-width', width).clearQueue().queue(function () {
+                $ZLDialog.animate({
+                    left: ($window.width() - $ZLDialog.width()) / 2,
+                    top: ($window.height() - $ZLDialog.height()) / 2
+                }, 200);
+            }).dequeue();
         });
         $ZLDialog.appendTo($body);
-        $window.triggerHandler('resize.dialog');
+        $window.triggerHandler('resize.dialog' + id);
         interval = setInterval(function () {
             $ZLDialog.css({
-                left: $window.width() / 2 - $ZLDialog.width() / 2,
-                top: $window.height() / 2 - $ZLDialog.height() / 2
+                left: ($window.width() - $ZLDialog.width()) / 2,
+                top: ($window.height() - $ZLDialog.height()) / 2
             });
         }, 10);
         if ($dialogLock) {
             $dialogLock.fadeIn(200);
         }
-        $ZLDialog.show(200, function () {
-            if (option.showBack) {
-                option.showBack();
-            }
-            if (option.timeout) {
-                timeout = setTimeout(closeDialog, option.timeout);
-            }
-            clearInterval(interval);
-        });
+        setTimeout(function () {
+            $ZLDialog.show(200, function () {
+                if (option.showBack) {
+                    option.showBack();
+                }
+                if (option.timeout) {
+                    timeout = setTimeout(closeDialog, option.timeout);
+                }
+                setTimeout(function () {
+                    clearInterval(interval);
+                }, 100);
+            });
+        }, 0);
         return closeDialog;
     };
 

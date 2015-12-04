@@ -12,6 +12,13 @@
   
 据说是为了满足某人的项目开发以及学习研究需要才诞生的。【所以不得不吐槽一下这皮肤真的让人家很不舒服呢！(╯﹏╰）】  
 ###我的成长
+ -2015-12-04    1.3.9-  
+  1.【Debug】修复显示对话框位置异常的BUG；  
+  2.【Debug】修复关闭对话框时未删除遮罩层的BUG；  
+  3.【Debug】修复size参数的'full'值在firefox中高度异常的BUG；  
+  4.【Debug】修复多对话框实例下resize冲突的BUG；  
+  5.【Debug】修复resize导致timeout/interval失效的BUG。  
+  
  -2015-11-26    1.3.4-  
   1.【Debug】修复加载外部链接size参数设置失效的BUG；  
   2.【Update】为size参数增加'full'值，修改padding参数'iframe'值功能；  

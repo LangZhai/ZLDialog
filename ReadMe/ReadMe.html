@@ -12,7 +12,7 @@
                 margin: 0;
                 padding: 0;
                 background: #777777;
-                font-family: "幼圆";
+                font-family: 'Courier New', 'Microsoft YaHei';
             }
 
             .textRight {
@@ -170,8 +170,8 @@
         <div id="contentDIV">
             <div id="headDIV" class="textRight">
                 <h1>ZLDialog</h1>
-                <h4>V 1.3.4</h4>
-                <h5>build 2015.11.26</h5>
+                <h4>V 1.3.9</h4>
+                <h5>build 2015.12.04</h5>
             </div>
             <ul id="menuUL">
                 <li class="current">初识我</li>
@@ -185,10 +185,10 @@
                     <div>
                         <h2>我是什么？</h2>
                         <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件，压缩后只有5KB哦！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
-                        <button id="firstHello">手贱点一下！</button>
-                        <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:" id="firstTX">@智能小菜菜</a>！！！
+                        <button id="firstA">手贱点一下！</button>
+                        <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:" id="demoA">@智能小菜菜</a>！！！
                         </p>
-                        <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:" id="browser">更现代的浏览器</a>吧！
+                        <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:" id="browserA">更现代的浏览器</a>吧！
                         </p>
                         <p>啊对了，顺便提一嘴，欢迎大家为我设计新的皮肤哦O(∩_∩)O~~</p>
                     </div>
@@ -200,7 +200,7 @@
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;ZLDialog-ReadMe&lt;/title&gt;
-    &lt;link rel="stylesheet" type="text/css" href="../css/ZLDialog.css"/&gt;
+    &lt;link rel="stylesheet" type="text/css" href="../css/ZLDialog.min.css"/&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;!--为了使页面加载更快，最好将JS放置在&lt;body&gt;的末尾--&gt;
@@ -332,17 +332,17 @@ var closeDialog=$("#testDIV").dialog({
                         <button class="doJS">加载！</button>
                         <p>最后来介绍一下我的特殊技能——预览面板吧！</p>
 <pre data-language="javascript">
-$("#previewButtonA").preview({
+$("#previewButton1").preview({
   content:"preview.jpg",
   type:"img",
   direction:"top"
 });
-$("#previewButtonB").preview({
+$("#previewButton2").preview({
   content:"这是一首简单的小情歌 唱着我们心头的曲折"
 });
 </pre>
-                        <button id="previewButtonA">预览图片！</button>
-                        <button id="previewButtonB">预览其他！</button>
+                        <button id="previewButton1">预览图片！</button>
+                        <button id="previewButton2">预览其他！</button>
                         <p>依然不清楚怎么使用？好吧......下面是参数列表，自己看咯！~\(≧▽≦)/~啦啦啦</p>
                         <table class="attrTable" border="1">
                             <tr>
@@ -993,7 +993,7 @@ $("#previewButtonB").preview({
                             <tr>
                                 <td>padding</td>
                                 <td>预览面板内容padding</td>
-                                <td>字符（写法同CSS）</td>
+                                <td>字符（写法同CSS）|'iframe'</td>
                                 <td>'10px'（type为'img'时）</td>
                             </tr>
                             <tr>
@@ -1022,86 +1022,13 @@ $.dialog.message({
                         <p>其实，根本没有想到我会降生于这个世界......</p>
                         <p>据说是为了满足某人的项目开发以及学习研究需要才诞生的。【所以不得不吐槽一下这皮肤真的让人家很不舒服呢！(╯﹏╰）】</p>
                         <h2>我的成长</h2>
-                        <p>
-                            &nbsp;-2015-11-26&nbsp;&nbsp;&nbsp;&nbsp;1.3.4-<br />
-                            &nbsp;&nbsp;1.【Debug】修复加载外部链接size参数设置失效的BUG；<br />
-                            &nbsp;&nbsp;2.【Update】为size参数增加'full'值，修改padding参数'iframe'值功能；<br />
-                            &nbsp;&nbsp;3.【Update】清理冗余代码。<br />
-                            <br />
-                            &nbsp;-2014-02-28&nbsp;&nbsp;&nbsp;&nbsp;1.3.1-<br />
-                            &nbsp;&nbsp;1.【Debug】修复IE11中外部链接加载崩溃BUG。（解决方法为换用1.11.0版jQuery，如在其他jQuery版本中发现加载BUG请设置inFrame:true）<br />
-                            <br />
-                            &nbsp;-2013-12-13&nbsp;&nbsp;&nbsp;&nbsp;1.3.0-<br />
-                            &nbsp;&nbsp;1.【Update】优化滚动条用户体验。<br />
-                            <br />
-                            &nbsp;-2013-12-09&nbsp;&nbsp;&nbsp;&nbsp;1.2.9-<br />
-                            &nbsp;&nbsp;1.【Debug】修复页面滚动后预览面板定位BUG；<br />
-                            &nbsp;&nbsp;2.【Update】为对话框按钮设置默认回调函数。<br />
-                            <br />
-                            -2013-12-05&nbsp;&nbsp;&nbsp;&nbsp;1.2.7-<br />
-                            &nbsp;&nbsp;1.【Debug】修复IE7中预览面板加载图片大小BUG。<br />
-                            <br />
-                            -2013-12-04&nbsp;&nbsp;&nbsp;&nbsp;1.2.6-<br />
-                            &nbsp;&nbsp;1.【Debug】修复按钮无法自动适配宽度的BUG；<br />
-                            &nbsp;&nbsp;2.【Debug】修复页面滚动后对话框拖动时的定位BUG；<br />
-                            &nbsp;&nbsp;3.【Debug】修复页面滚动后对话框关闭时的定位BUG。<br />
-                            <br />
-                            -2013-10-15&nbsp;&nbsp;&nbsp;&nbsp;1.2.3-<br />
-                            &nbsp;&nbsp;1.【Add】扩充加载链接方法使其可自定义加载模式。<br />
-                            <br />
-                            -2013-10-08&nbsp;&nbsp;&nbsp;&nbsp;1.2.2-<br />
-                            &nbsp;&nbsp;1.【Update】定义私有作用域避免代码污染。<br />
-                            <br />
-                            -2013-09-11&nbsp;&nbsp;&nbsp;&nbsp;1.2.1-<br />
-                            &nbsp;&nbsp;1.【Remove】废弃realWidth和realHeight方法，使用jQuery的outerWidth和outerHeight代替。<br />
-                            <br />
-                            -2013-08-28&nbsp;&nbsp;&nbsp;&nbsp;1.2.0-<br />
-                            &nbsp;&nbsp;1.【Debug】修复对话框关闭时位置闪跳的BUG。<br />
-                            <br />
-                            -2013-08-19&nbsp;&nbsp;&nbsp;&nbsp;1.1.9-<br />
-                            &nbsp;&nbsp;1.【Debug】修复预览面板图片大小BUG；<br />
-                            &nbsp;&nbsp;2.【Update】动态限制对话框大小。<br />
-                            <br />
-                            -2013-08-14&nbsp;&nbsp;&nbsp;&nbsp;1.1.7-<br />
-                            &nbsp;&nbsp;1.【Add】加入预览面板direction属性；<br />
-                            &nbsp;&nbsp;2.【Update】去掉预览面板图片最大宽度限制；<br />
-                            &nbsp;&nbsp;3.【Update】为预览面板设置默认padding值。<br />
-                            <br />
-                            -2013-08-12&nbsp;&nbsp;&nbsp;&nbsp;1.1.4-<br />
-                            &nbsp;&nbsp;1.【Update】修改对话框内容区域的overflow为auto。<br />
-                            <br />
-                            -2013-08-08&nbsp;&nbsp;&nbsp;&nbsp;1.1.3-<br />
-                            &nbsp;&nbsp;1.【Debug】修复浏览器窗口resize导致对话框自动关闭失效的BUG。<br />
-                            <br />
-                            -2013-08-01&nbsp;&nbsp;&nbsp;&nbsp;1.1.2-<br />
-                            &nbsp;&nbsp;1.【Debug】修复IE下预览面板大小无法自适应的BUG；<br />
-                            &nbsp;&nbsp;2.【Update】优化浏览器窗口resize事件；<br />
-                            &nbsp;&nbsp;3.【Update】修改ZLDialog出现/隐藏动画为从屏幕中间垂直展开/收缩；<br />
-                            &nbsp;&nbsp;4.【Debug】修复IE8及以下浏览器预览面板位置BUG；<br />
-                            &nbsp;&nbsp;5.【Update】调整预览面板对齐方式为中线对齐。<br />
-                            <br />
-                            -2013-07-26&nbsp;&nbsp;&nbsp;&nbsp;1.0.7-<br />
-                            &nbsp;&nbsp;1.【Debug】修复ZLDialog样式被覆盖的BUG；<br />
-                            &nbsp;&nbsp;2.【Add】加入显示预览面板功能。<br />
-                            <br />
-                            -2013-07-23&nbsp;&nbsp;&nbsp;&nbsp;1.0.5-<br />
-                            &nbsp;&nbsp;1.【Update】将“消息框”更名为“警告框”；<br />
-                            &nbsp;&nbsp;2.【Add】加入消息框功能。<br />
-                            <br />
-                            -2013-07-10&nbsp;&nbsp;&nbsp;&nbsp;1.0.3-<br />
-                            &nbsp;&nbsp;1.【Add】加入确认警告框功能；<br />
-                            &nbsp;&nbsp;2.【Add】加入加载外部链接功能；<br />
-                            &nbsp;&nbsp;3.【Update】代码优化。<br />
-                            <br />
-                            -2013-07-02&nbsp;&nbsp;&nbsp;&nbsp;1.0.0-<br />
-                            &nbsp;&nbsp;1.【Add】ZLDialog诞生。
-                        </p>
+                        <p id="readme" style="white-space: pre-wrap;"></p>
                         <h2>关于作者</h2>
                         <p>咳咳，终于该我登场了，妖怪速速退散！！！【散你妹，傻X】【左边泥垢！！！】</p>
                         <p>
                             好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在53kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
 							-->直男【讲这么多废话是要闹甚！！！不会有妹子看上你的魂淡！！！】，因为看到某篇文章说<!--
-							--><a href="javascript:" onclick="$.dialog.open({title:'不定义JQuery插件，不要说会JQuery',url:'http://www.cnblogs.com/xcj26/p/3345556.html'});">“不定义JQuery插件，不要说会JQuery”</a><!--
+							--><a href="javascript:" id="linkA">“不定义JQuery插件，不要说会JQuery”</a><!--
 							-->，再加上确实也是项目需要因此就诞生了这货嗯。嘛，其实我也知道这皮肤真心丑爆，但是确实是没什么时间，并且我们看人不应该只看外表，看待一款插件也应该是这样嗯【分明是在找借口啊喂！】。于是<!--
 							-->觉得这货还算好用的老爷们，不妨为这货设计几款看得过去的皮肤，在这里替这货谢谢各位了！！！
                         </p>
@@ -1124,241 +1051,99 @@ $.dialog.message({
                 关键字　<input type="text" name="wd" />
             </form>
         </div>
-        <div id="licenseDIV" class="hidden">
-            <h3 style="text-align: center;">GNU LESSER GENERAL PUBLIC LICENSE</h3>
-            <p style="text-align: center;">Version 3, 29 June 2007</p>
-            <p>Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;</p><p>
-            Everyone is permitted to copy and distribute verbatim copies
-            of this license document, but changing it is not allowed.</p>
-            <p>This version of the GNU Lesser General Public License incorporates
-                the terms and conditions of version 3 of the GNU General Public
-                License, supplemented by the additional permissions listed below.</p>
-            <h4>0. Additional Definitions.</h4>
-            <p>As used herein, “this License” refers to version 3 of the GNU Lesser
-                General Public License, and the “GNU GPL” refers to version 3 of the GNU
-                General Public License.</p>
-            <p>“The Library” refers to a covered work governed by this License,
-                other than an Application or a Combined Work as defined below.</p>
-            <p>An “Application” is any work that makes use of an interface provided
-                by the Library, but which is not otherwise based on the Library.
-                Defining a subclass of a class defined by the Library is deemed a mode
-                of using an interface provided by the Library.</p>
-            <p>A “Combined Work” is a work produced by combining or linking an
-                Application with the Library. The particular version of the Library
-                with which the Combined Work was made is also called the “Linked
-                Version”.</p>
-            <p>The “Minimal Corresponding Source” for a Combined Work means the
-                Corresponding Source for the Combined Work, excluding any source code
-                for portions of the Combined Work that, considered in isolation, are
-                based on the Application, and not on the Linked Version.</p>
-            <p>The “Corresponding Application Code” for a Combined Work means the
-                object code and/or source code for the Application, including any data
-                and utility programs needed for reproducing the Combined Work from the
-                Application, but excluding the System Libraries of the Combined Work.</p>
-            <h4>1. Exception to Section 3 of the GNU GPL.</h4>
-            <p>You may convey a covered work under sections 3 and 4 of this License
-                without being bound by section 3 of the GNU GPL.</p>
-            <h4>2. Conveying Modified Versions.</h4>
-            <p>If you modify a copy of the Library, and, in your modifications, a
-                facility refers to a function or data to be supplied by an Application
-                that uses the facility (other than as an argument passed when the
-                facility is invoked), then you may convey a copy of the modified
-                version:</p>
-            <ul>
-                <li>a) under this License, provided that you make a good faith effort to
-                    ensure that, in the event an Application does not supply the
-                    function or data, the facility still operates, and performs
-                    whatever part of its purpose remains meaningful, or
-                </li>
-                <li>b) under the GNU GPL, with none of the additional permissions of
-                    this License applicable to that copy.
-                </li>
-            </ul>
-            <h4>3. Object Code Incorporating Material from Library Header Files.
-            </h4>
-            <p>The object code form of an Application may incorporate material from
-                a header file that is part of the Library. You may convey such object
-                code under terms of your choice, provided that, if the incorporated
-                material is not limited to numerical parameters, data structure
-                layouts and accessors, or small macros, inline functions and templates
-                (ten or fewer lines in length), you do both of the following:</p>
-            <ul>
-                <li>a) Give prominent notice with each copy of the object code that the
-                    Library is used in it and that the Library and its use are
-                    covered by this License.
-                </li>
-                <li>b) Accompany the object code with a copy of the GNU GPL and this license
-                    document.
-                </li>
-            </ul>
-            <h4>4. Combined Works.</h4>
-            <p>You may convey a Combined Work under terms of your choice that,
-                taken together, effectively do not restrict modification of the
-                portions of the Library contained in the Combined Work and reverse
-                engineering for debugging such modifications, if you also do each of
-                the following:</p>
-            <ul>
-                <li>a) Give prominent notice with each copy of the Combined Work that
-                    the Library is used in it and that the Library and its use are
-                    covered by this License.
-                </li>
-                <li>b) Accompany the Combined Work with a copy of the GNU GPL and this license
-                    document.
-                </li>
-                <li>c) For a Combined Work that displays copyright notices during
-                    execution, include the copyright notice for the Library among
-                    these notices, as well as a reference directing the user to the
-                    copies of the GNU GPL and this license document.
-                </li>
-                <li>d) Do one of the following:
-                    <ul>
-                        <li>0) Convey the Minimal Corresponding Source under the terms of this
-                            License, and the Corresponding Application Code in a form
-                            suitable for, and under terms that permit, the user to
-                            recombine or relink the Application with a modified version of
-                            the Linked Version to produce a modified Combined Work, in the
-                            manner specified by section 6 of the GNU GPL for conveying
-                            Corresponding Source.
-                        </li>
-                        <li>1) Use a suitable shared library mechanism for linking with the
-                            Library. A suitable mechanism is one that (a) uses at run time
-                            a copy of the Library already present on the user's computer
-                            system, and (b) will operate properly with a modified version
-                            of the Library that is interface-compatible with the Linked
-                            Version.
-                        </li>
-                    </ul>
-                </li>
-                <li>e) Provide Installation Information, but only if you would otherwise
-                    be required to provide such information under section 6 of the
-                    GNU GPL, and only to the extent that such information is
-                    necessary to install and execute a modified version of the
-                    Combined Work produced by recombining or relinking the
-                    Application with a modified version of the Linked Version. (If
-                    you use option 4d0, the Installation Information must accompany
-                    the Minimal Corresponding Source and Corresponding Application
-                    Code. If you use option 4d1, you must provide the Installation
-                    Information in the manner specified by section 6 of the GNU GPL
-                    for conveying Corresponding Source.)
-                </li>
-            </ul>
-            <h4>5. Combined Libraries.</h4>
-            <p>You may place library facilities that are a work based on the
-                Library side by side in a single library together with other library
-                facilities that are not Applications and are not covered by this
-                License, and convey such a combined library under terms of your
-                choice, if you do both of the following:</p>
-            <ul>
-                <li>a) Accompany the combined library with a copy of the same work based
-                    on the Library, uncombined with any other library facilities,
-                    conveyed under the terms of this License.
-                </li>
-                <li>b) Give prominent notice with the combined library that part of it
-                    is a work based on the Library, and explaining where to find the
-                    accompanying uncombined form of the same work.
-                </li>
-            </ul>
-            <h4>6. Revised Versions of the GNU Lesser General Public License.</h4>
-            <p>The Free Software Foundation may publish revised and/or new versions
-                of the GNU Lesser General Public License from time to time. Such new
-                versions will be similar in spirit to the present version, but may
-                differ in detail to address new problems or concerns.</p>
-            <p>Each version is given a distinguishing version number. If the
-                Library as you received it specifies that a certain numbered version
-                of the GNU Lesser General Public License “or any later version”
-                applies to it, you have the option of following the terms and
-                conditions either of that published version or of any later version
-                published by the Free Software Foundation. If the Library as you
-                received it does not specify a version number of the GNU Lesser
-                General Public License, you may choose any version of the GNU Lesser
-                General Public License ever published by the Free Software Foundation.</p>
-            <p>If the Library as you received it specifies that a proxy can decide
-                whether future versions of the GNU Lesser General Public License shall
-                apply, that proxy's public statement of acceptance of any version is
-                permanent authorization for you to choose that version for the
-                Library.</p>
-        </div>
         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="rainbow-custom.min.js"></script>
         <script type="text/javascript" src="../js/ZLDialog.min.js"></script>
         <script type="text/javascript">
             $(function () {
-                var $contentWrapDIV = $("#contentWrapDIV").children();
-                $(".doJS").bind("click", function () {
-                    var $prev = $(this).prev();
-                    if ($prev.is("div"))
-                        eval($prev.html());
-                    else
-                        eval($prev.children().val());
+                var $contentWrapDIV = $('#contentWrapDIV').children();
+                $.ajax({
+                    url: '../README.md'
+                }).done(function (data) {
+                    $('#readme').html(data.substring(data.indexOf('###我的成长') + 9, data.indexOf('###关于作者') - 2));
                 });
-                $("#menuUL").children("li").bind("click", function () {
-                    var $this = $(this).addClass("current"), index = $this.index();
-                    $this.siblings().removeClass("current");
-                    $contentWrapDIV.children(":eq(" + index + ")").show(500).siblings().hide(500);
+                $('#menuUL').on('click', 'li', function () {
+                    var $this = $(this).addClass('current'), index = $this.index();
+                    $this.siblings().removeClass('current');
+                    $contentWrapDIV.children(':eq(' + index + ')').show(500).siblings().hide(500);
                 });
-                $("#firstHello").bind("click", function () {
+                $('#firstA').on('click', function () {
                     $.dialog.message({
-                        content: "哼(ˉ(∞)ˉ)唧！"
+                        content: '哼(ˉ(∞)ˉ)唧！'
                     });
                 });
-                $("#firstTX").bind("click", function () {
+                $('#demoA').on('click', function () {
                     var closeDialog = $.dialog({
-                        title: "泥垢！！！",
-                        content: "再说我坏话就把你删掉！",
+                        title: '泥垢！！！',
+                        content: '再说我坏话就把你删掉！',
                         hideX: true,
                         buttons: [
                             {
-                                text: "怪我咯？",
+                                text: '怪我咯？',
                                 callback: function () {
                                     closeDialog();
                                     $.dialog.message({
-                                        content: "......"
+                                        content: '......'
                                     });
                                 }
                             },
                             {
-                                text: "主人我错了！",
+                                text: '主人我错了！',
                                 callback: function () {
                                     closeDialog();
                                     $.dialog.message({
-                                        content: "哼~~【偷笑】"
+                                        content: '哼~~【偷笑】'
                                     });
                                 }
                             }
                         ]
                     });
                 });
-                $("#browser").bind("click", function () {
+                $('#browserA').on('click', function () {
                     $.dialog({
-                        title: "建议使用它们",
-                        size: {
-                            width: 250
-                        },
-                        content: "<ul><li>Chrome(版本帝伤比起)</li><li>Firefox(版本帝伤不起)</li><li>Opera(版本帝伤不起)</li><li>Internet Explorer(10及以上)</li><li>国产逗比浏览器不保证正常使用</li></ul>",
-                        padding: "0px 25px 0 0"
+                        title: '建议使用它们',
+                        content: '<ul><li>Firefox</li><li>Chrome</li><li>Opera</li><li>Edge</li><li>Internet Explorer(10+)</li></ul>',
+                        padding: '0px 25px 0 0'
                     });
                 });
-                $("#previewButtonA").preview({
-                    content: "preview.jpg",
-                    type: "img",
-                    direction: "top"
-                });
-                $("#previewButtonB").preview({
-                    content: "这是一首简单的小情歌 唱着我们心头的曲折"
-                });
-                $("#licenseA").bind("click", function () {
-                    $("#licenseDIV").dialog({
-                        title: "GNU LESSER GENERAL PUBLIC LICENSE"
+                $('#licenseA').on('click', function () {
+                    $.ajax({
+                        url: '../LICENSE'
+                    }).done(function (data) {
+                        $.dialog({
+                            title: 'GNU LESSER GENERAL PUBLIC LICENSE',
+                            content: '<div style=\'white-space: pre-wrap;\'>' + data + '</div>'
+                        });
                     });
                 });
-                $("#lastA").bind("click", function () {
+                $('#linkA').on('click', function () {
+                    $.dialog.open({
+                        title: '不定义JQuery插件，不要说会JQuery',
+                        url: 'http://www.cnblogs.com/xcj26/p/3345556.html',
+                        inFrame: true,
+                        size: 'full'
+                    });
+                });
+                $('#lastA').on('click', function () {
                     $.dialog({
-                        title: "联系作者",
-                        content: "【E-Mail】<br/>　　zl2005xyz@126.com<br/>　　zl2012xyz@hotmail.com",
-                        size: {
-                            width: 180
-                        }
+                        title: '联系作者',
+                        content: '【E-Mail】<br/>　　zl2005xyz@126.com<br/>　　zl2012xyz@hotmail.com'
                     });
+                });
+                $('.doJS').on('click', function () {
+                    var $prev = $(this).prev();
+                    if ($prev.is('div'))
+                        eval($prev.html());
+                    else
+                        eval($prev.children().val());
+                });
+                $('#previewButton1').preview({
+                    content: 'preview.jpg',
+                    type: 'img',
+                    direction: 'top'
+                });
+                $('#previewButton2').preview({
+                    content: '这是一首简单的小情歌 唱着我们心头的曲折'
                 });
             });
         </script>
