@@ -214,11 +214,6 @@ $.dialog.alert({
   content:"弹弹弹，弹走鱼尾纹~~"
 });
 </pre>
-                        <div class="hidden">
-                            $.dialog.alert({
-                            content:"弹弹弹，弹走鱼尾纹~~"
-                            });
-                        </div>
                         <button class="doJS">弹一下！</button>
                         <p>很简单对吧？这只是一个很简单的例子。现在来看一个稍微复杂一点的！</p>
 <pre data-language="javascript">
@@ -239,25 +234,46 @@ $.dialog({
   ]
 });
 </pre>
-                        <div class="hidden">
-                            $.dialog({
-                            title:"嗯哼",
-                            content:"就只是简单测试一下好了！",
-                            hideX:true,
-                            drag:false,
-                            lock:false,
-                            closeBack:function(){
-                            $.dialog.message({
-                            content:"万万没想到，啦啦啦啦啦~~~"
-                            });
-                            },
-                            buttons:[
-                            {
-                            text:"好的呀！"
-                            }
-                            ]
-                            });
-                        </div>
+                        <button class="doJS">弹一下！</button>
+                        <p>当然还有确认对话框！</p>
+<pre data-language="javascript">
+var close = $.dialog.confirm({
+    content: "你确定？"
+}, function () {
+    $.dialog.message({
+        content: "啦啦啦啦啦~~~"
+    });
+    close();
+});
+</pre>
+                        <button class="doJS">弹一下！</button>
+                        <p>也是确认对话框！</p>
+<pre data-language="javascript">
+var close = $.dialog.confirm({
+    content: "同意？"
+}, function () {
+    $.dialog.message({
+        content: "啦啦啦啦啦~~~"
+    });
+    close();
+}, function () {
+    $.dialog.message({
+        content: "我不管，反正你必须同意！"
+    });
+});
+</pre>
+                        <button class="doJS">弹一下！</button>
+                        <p>依然是确认对话框！</p>
+<pre data-language="javascript">
+$.dialog.confirm({
+    content: "啊哈！？",
+    closeBack: function () {
+        $.dialog.message({
+            content: "无论如何我都会出现哟！"
+        });
+    }
+});
+</pre>
                         <button class="doJS">弹一下！</button>
                         <p>所以你看，我是不是很好调教呢？接下来换点别的吧，比如让我加载一个外部链接试试！</p>
 <pre data-language="javascript">
@@ -271,17 +287,6 @@ $.dialog.open({
   url:"http://www.cnblogs.com/"
 });
 </pre>
-                        <div class="hidden">
-                            $.dialog.open({
-                            title:"博客园",
-                            inFrame:true,
-                            size:{
-                            width:1024,
-                            height:768
-                            },
-                            url:"http://www.cnblogs.com/"
-                            });
-                        </div>
                         <button class="doJS">加载！</button>
                         <p>不仅如此，我还可以直接加载元素内容哦！</p>
 <pre data-language="javascript">
@@ -307,28 +312,6 @@ var closeDialog=$("#testDIV").dialog({
   ]
 });
 </pre>
-                        <div class="hidden">
-                            var closeDialog=$("#testDIV").dialog({
-                            title:"百度搜索",
-                            hideX:true,
-                            lock:false,
-                            size:{
-                            width:220
-                            },
-                            buttons:[
-                            {
-                            text:"百度一下",
-                            callback:function(){
-                            $(this).parent().prev().find("form").submit();
-                            closeDialog();
-                            }
-                            },
-                            {
-                            text:"取消"
-                            }
-                            ]
-                            });
-                        </div>
                         <button class="doJS">加载！</button>
                         <p>最后来介绍一下我的特殊技能——预览面板吧！</p>
 <pre data-language="javascript">
@@ -1131,11 +1114,7 @@ $.dialog.message({
                     });
                 });
                 $('.doJS').on('click', function () {
-                    var $prev = $(this).prev();
-                    if ($prev.is('div'))
-                        eval($prev.html());
-                    else
-                        eval($prev.children().val());
+                    eval($(this).prev().text());
                 });
                 $('#previewButton1').preview({
                     content: 'preview.jpg',
