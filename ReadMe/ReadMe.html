@@ -143,6 +143,8 @@
                 height: 250px;
                 width: 1000px;
                 resize: none;
+                box-sizing: border-box;
+                margin-bottom: 15px;
             }
 
             #footDIV div {
@@ -991,13 +993,11 @@ $("#previewButton2").preview({
                     <div class="hidden">
                         <h2>讨厌啦！</h2>
                         <p>已经把持不住了？那就试试你到底行不行吧！</p>
-                        <p>
-                            <textarea id="tryArea">
+                        <textarea id="tryArea">
 $.dialog.message({
     content:"开心时刻必胜客~~"
 });
-                            </textarea>
-                        </p>
+                        </textarea>
                         <button class="doJS">运行！</button>
                     </div>
                     <div class="hidden">
@@ -1114,7 +1114,8 @@ $.dialog.message({
                     });
                 });
                 $('.doJS').on('click', function () {
-                    eval($(this).prev().text());
+                    var $prev = $(this).prev();
+                    eval($prev.val() || $prev.text());
                 });
                 $('#previewButton1').preview({
                     content: 'preview.jpg',
