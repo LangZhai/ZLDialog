@@ -1,10 +1,11 @@
 /**
- * ZLDialog 1.3.9
- * Date: 2015-12-04
- * © 2013-2015 智能小菜菜
+ * ZLDialog 1.4.1
+ * Date: 2016-03-17
+ * © 2013-2016 智能小菜菜
  * This is licensed under the GNU LGPL, version 3 or later.
  * For details, see: http://www.gnu.org/licenses/lgpl.html
  */
+
 .dialogLock {
     display: none;
     top: 0;
@@ -91,14 +92,14 @@
     color: #FFFFFF;
     height: 26px;
     border: 1px solid #00487A;
-    background: url('../img/button.gif') repeat-x;
+    background: url('button.gif') repeat-x;
     margin-right: 5px;
     border-radius: 3px;
 }
 
 .ZLDialog .dialogFoot a:hover {
     border: 1px solid #272727;
-    background: url('../img/altbutton.gif') repeat-x;
+    background: url('altbutton.gif') repeat-x;
 }
 
 .ZLDialog_panel {

@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="description" content="ZLDialog是一款由智能小菜菜开发的基于jQuery的弹窗插件。" />
-        <meta name="keywords" content="ZLDialog,弹窗插件,智能小菜菜,SmartCai" />
-        <link rel="stylesheet" type="text/css" href="blackboard.css" />
-        <link rel="stylesheet" type="text/css" href="../css/ZLDialog.min.css" />
-        <title>ZLDialog-ReadMe</title>
-        <style type="text/css">
+        <meta charset="utf-8">
+        <meta name="description" content="ZLDialog是一款由智能小菜菜开发的基于jQuery的弹窗插件。">
+        <meta name="keywords" content="ZLDialog,jQuery弹窗插件,智能小菜菜,SmartCai">
+        <link rel="stylesheet" href="resource/blackboard.min.css">
+        <link rel="stylesheet" href="dist/skin/default/zldialog.default.min.css">
+        <title>ZLDialog</title>
+        <style>
             body {
                 margin: 0;
                 padding: 0;
@@ -186,7 +186,7 @@
                 <div>
                     <div>
                         <h2>我是什么？</h2>
-                        <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件，压缩后只有5KB哦！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
+                        <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
                         <button id="firstA">手贱点一下！</button>
                         <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:" id="demoA">@智能小菜菜</a>！！！
                         </p>
@@ -200,64 +200,63 @@
 <pre data-language="html">
 &lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;ZLDialog-ReadMe&lt;/title&gt;
-    &lt;link rel="stylesheet" type="text/css" href="../css/ZLDialog.min.css"/&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;!--为了使页面加载更快，最好将JS放置在&lt;body&gt;的末尾--&gt;
-    &lt;script type="text/javascript" src="../js/ZLDialog.min.js"&gt;&lt;/script&gt;
-  &lt;/body&gt;
+    &lt;head&gt;
+        &lt;title&gt;ZLDialog-ReadMe&lt;/title&gt;
+        &lt;link rel="stylesheet" href="zldialog.default.min.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--为了使页面加载更快，最好将JS放置在&lt;body&gt;的末尾--&gt;
+        &lt;script src="jquery-1.12.1.min.js"&gt;&lt;/script&gt;
+        &lt;script src="jquery.zldialog.min.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
 &lt;/html&gt;
 </pre>
                         <p>接下来就可以愉快地玩(LAI)耍(YI)啦(FA)！</p>
 <pre data-language="javascript">
 $.dialog.alert({
-  content:"弹弹弹，弹走鱼尾纹~~"
+    content: "弹弹弹，弹走鱼尾纹~~"
 });
 </pre>
                         <button class="doJS">弹一下！</button>
                         <p>很简单对吧？这只是一个很简单的例子。现在来看一个稍微复杂一点的！</p>
 <pre data-language="javascript">
 $.dialog({
-  content:"就只是简单测试一下好了！",
-  hideX:true,
-  drag:false,
-  lock:false,
-  closeBack:function(){
-    $.dialog.message({
-      content:"万万没想到，啦啦啦啦啦~~~"
-    });
-  },
-  buttons:[
-    {
-      text:"好的呀！"
-    }
-  ]
+    content: "就只是简单测试一下好了！",
+    hideX: true,
+    drag: false,
+    lock: false,
+    closeBack: function () {
+        $.dialog.message({
+            content: "万万没想到，啦啦啦啦啦~~~"
+        });
+    },
+    buttons: [
+        {
+            text: "好的呀！"
+        }
+    ]
 });
 </pre>
                         <button class="doJS">弹一下！</button>
                         <p>当然还有确认对话框！</p>
 <pre data-language="javascript">
-var close = $.dialog.confirm({
-    content: "你确定？"
-}, function () {
+var closeDialog = $.dialog.confirm(null, function () {
     $.dialog.message({
         content: "啦啦啦啦啦~~~"
     });
-    close();
+    closeDialog();
 });
 </pre>
                         <button class="doJS">弹一下！</button>
                         <p>也是确认对话框！</p>
 <pre data-language="javascript">
-var close = $.dialog.confirm({
+var closeDialog = $.dialog.confirm({
     content: "同意？"
 }, function () {
     $.dialog.message({
         content: "啦啦啦啦啦~~~"
     });
-    close();
+    closeDialog();
 }, function () {
     $.dialog.message({
         content: "我不管，反正你必须同意！"
@@ -280,50 +279,50 @@ $.dialog.confirm({
                         <p>所以你看，我是不是很好调教呢？接下来换点别的吧，比如让我加载一个外部链接试试！</p>
 <pre data-language="javascript">
 $.dialog.open({
-  title:"博客园",
-  inFrame:true,
-  size:{
-    width:1024,
-    height:768
-  },
-  url:"http://www.cnblogs.com/"
+    title: "博客园",
+    inFrame: true,
+    size: {
+        width: 1024,
+        height: 768
+    },
+    url: "http://www.cnblogs.com/"
 });
 </pre>
                         <button class="doJS">加载！</button>
                         <p>不仅如此，我还可以直接加载元素内容哦！</p>
 <pre data-language="javascript">
 //对话框初始化后会返回一个函数用来关闭对话框
-var closeDialog=$("#testDIV").dialog({
-  title:"百度搜索",
-  hideX:true,
-  lock:false,
-  size:{
-    width:220
-  },
-  buttons:[
-    {
-      text:"百度一下",
-      callback:function(){
-        $(this).parent().prev().find("form").submit();
-        closeDialog();
-      }
+var closeDialog = $("#testDIV").dialog({
+    title: "百度搜索",
+    hideX: true,
+    lock: false,
+    size: {
+        width: 220
     },
-    {
-      text:"取消"
-    }
-  ]
+    buttons: [
+        {
+            text: "百度一下",
+            callback: function () {
+                $(this).parent().prev().find("form").submit();
+                closeDialog();
+            }
+        },
+        {
+            text: "取消"
+        }
+    ]
 });
 </pre>
                         <button class="doJS">加载！</button>
                         <p>最后来介绍一下我的特殊技能——预览面板吧！</p>
 <pre data-language="javascript">
 $("#previewButton1").preview({
-  content:"preview.jpg",
-  type:"img",
-  direction:"top"
+    content: "resource/preview.jpg",
+    type: "img",
+    direction: "top"
 });
 $("#previewButton2").preview({
-  content:"这是一首简单的小情歌 唱着我们心头的曲折"
+    content: "这是一首简单的小情歌 唱着我们心头的曲折"
 });
 </pre>
                         <button id="previewButton1">预览图片！</button>
@@ -987,15 +986,38 @@ $("#previewButton2").preview({
                                 <td>字符（限选'top'、'right'、'bottom'、'left'）</td>
                                 <td>'right'</td>
                             </tr>
-                            <tr>
                         </table>
+                        <h2>国际化！</h2>
+                        <p>是的，我已经正式支持国际化啦~~~小伙伴们快来感受下吧！</p>
+                        <p>要使用国际化，需要先将国际化模块引入到你的页面中：</p>
+<pre data-language="html">
+&lt;script src="jquery.zldialog.l18n.min.js"&gt;&lt;/script&gt;
+</pre>
+                        <p>然后就可以用两种姿势放肆地调戏我啦！</p>
+                        <p>姿势一：</p>
+<pre data-language="javascript">
+$.dialog.setL18n('en');
+</pre>
+                        <p>姿势二：</p>
+<pre data-language="javascript">
+$.dialog.setL18n({
+    title: 'Dialog',
+    alert: 'Alert',
+    confirm: 'Confirm',
+    ok: 'OK',
+    yes: 'Yes',
+    no: 'No',
+    confirmText: 'Are you sure that you want to perform this action?',
+    close: 'Close'
+});
+</pre>
                     </div>
                     <div class="hidden">
                         <h2>讨厌啦！</h2>
                         <p>已经把持不住了？那就试试你到底行不行吧！</p>
                         <textarea id="tryArea">
 $.dialog.message({
-    content:"开心时刻必胜客~~"
+    content: "开心时刻必胜客~~"
 });
                         </textarea>
                         <button class="doJS">运行！</button>
@@ -1009,8 +1031,8 @@ $.dialog.message({
                         <h2>关于作者</h2>
                         <p>咳咳，终于该我登场了，妖怪速速退散！！！【散你妹，傻X】【左边泥垢！！！】</p>
                         <p>
-                            好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在53kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
-							-->直男【讲这么多废话是要闹甚！！！不会有妹子看上你的魂淡！！！】，因为看到某篇文章说<!--
+                            好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在55kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
+							-->直男，但并不是直男癌【讲这么多废话是要闹甚！！！不会有妹子看上你的魂淡！！！】，因为看到某篇文章说<!--
 							--><a href="javascript:" id="linkA">“不定义JQuery插件，不要说会JQuery”</a><!--
 							-->，再加上确实也是项目需要因此就诞生了这货嗯。嘛，其实我也知道这皮肤真心丑爆，但是确实是没什么时间，并且我们看人不应该只看外表，看待一款插件也应该是这样嗯【分明是在找借口啊喂！】。于是<!--
 							-->觉得这货还算好用的老爷们，不妨为这货设计几款看得过去的皮肤，在这里替这货谢谢各位了！！！
@@ -1025,23 +1047,25 @@ $.dialog.message({
                 </div>
             </div>
             <div id="footDIV">
-                <h4>© 2013-2015 智能小菜菜</h4>
+                <h4>© 2013-2016 智能小菜菜</h4>
                 <h5>本插件基于<a href="javascript:" id="licenseA">LGPL开源协议</a>开发，欢迎一切非商业/商业目的使用。</h5>
             </div>
         </div>
         <div id="testDIV" class="hidden">
             <form action="http://www.baidu.com/s" target="_blank">
-                关键字　<input type="text" name="wd" />
+                关键字　<input type="text" name="wd">
             </form>
         </div>
-        <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="rainbow-custom.min.js"></script>
-        <script type="text/javascript" src="../js/ZLDialog.min.js"></script>
-        <script type="text/javascript">
+        <script src="resource/jquery-1.12.1.min.js"></script>
+        <script src="resource/rainbow-custom.min.js"></script>
+        <script src="dist/js/jquery.zldialog.min.js"></script>
+        <script src="dist/js/jquery.zldialog.l18n.min.js"></script>
+        <script>
             $(function () {
                 var $contentWrapDIV = $('#contentWrapDIV').children();
+
                 $.ajax({
-                    url: '../README.md'
+                    url: 'README.md'
                 }).done(function (data) {
                     $('#readme').html(data.substring(data.indexOf('###我的成长') + 9, data.indexOf('###关于作者') - 2));
                 });
@@ -1091,7 +1115,7 @@ $.dialog.message({
                 });
                 $('#licenseA').on('click', function () {
                     $.ajax({
-                        url: '../LICENSE'
+                        url: 'LICENSE'
                     }).done(function (data) {
                         $.dialog({
                             title: 'GNU LESSER GENERAL PUBLIC LICENSE',
@@ -1118,7 +1142,7 @@ $.dialog.message({
                     eval($prev.val() || $prev.text());
                 });
                 $('#previewButton1').preview({
-                    content: 'preview.jpg',
+                    content: 'resource/preview.jpg',
                     type: 'img',
                     direction: 'top'
                 });

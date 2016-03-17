@@ -1,11 +1,15 @@
 /**
- * ZLDialog 1.3.9
- * Date: 2015-12-04
- * © 2013-2015 智能小菜菜
+ * ZLDialog 1.4.1
+ * Date: 2016-03-17
+ * © 2013-2016 智能小菜菜
  * This is licensed under the GNU LGPL, version 3 or later.
  * For details, see: http://www.gnu.org/licenses/lgpl.html
  *
  * ==========更新历史==========
+ *  -2016-03-17    1.4.1-
+ *   1.【Add】加入国际化功能；
+ *   2.【Update】重新梳理目录结构。
+ *
  * -2015-12-04    1.3.9-
  *   1.【Debug】修复显示对话框位置异常的BUG；
  *   2.【Debug】修复关闭对话框时未删除遮罩层的BUG；
@@ -146,25 +150,25 @@
                     });
                 }, 0);
             };
+        if (option == undefined) {
+            option = {};
+        }
         if (option.message) {
             $ZLDialog = $('<div class=\'ZLDialog\'><div class=\'dialogBody\'></div></div>');
             $dialogBody = $ZLDialog.children('.dialogBody:first');
         } else {
-            $ZLDialog = $('<div class=\'ZLDialog\'><div class=\'dialogTitleDIV\'><div class=\'dialogTitleSpan\'>对话框</div><a class=\'dialogTitleClose\' title=\'关闭\'>x</a></div><div class=\'dialogBody\'></div><div class=\'dialogFoot\'></div></div>');
+            $ZLDialog = $('<div class=\'ZLDialog\'><div class=\'dialogTitleDIV\'><div class=\'dialogTitleSpan\'>' + (option.title || $.dialog.l18n.title) + '</div><a class=\'dialogTitleClose\' title=\'' + $.dialog.l18n.close + '\'>x</a></div><div class=\'dialogBody\'></div><div class=\'dialogFoot\'></div></div>');
             $dialogTitleDIV = $ZLDialog.children('.dialogTitleDIV:first');
             $dialogBody = $ZLDialog.children('.dialogBody:first');
             $dialogFoot = $ZLDialog.children('.dialogFoot:first');
             $dialogTitleDIV.children('.dialogTitleClose:first').on('click.dialog', closeDialog);
-            if (option.title) {
-                $dialogTitleDIV.children('.dialogTitleSpan:first').html(option.title);
-            }
             if (option.hideX) {
                 $dialogTitleDIV.children('.dialogTitleClose:first').remove();
             }
             if (option.size) {
                 $ZLDialog.width(option.size.width);
                 $dialogBody.height(option.size.height);
-                if (option.size == 'full') {
+                if (option.size === 'full') {
                     $ZLDialog.width(9999);
                     $dialogBody.height(9999);
                 } else {
@@ -211,7 +215,7 @@
             $dialogLock = $('<div class=\'dialogLock\'></div>').appendTo($body);
         }
         if (option.padding) {
-            if (option.padding == 'iframe') {
+            if (option.padding === 'iframe') {
                 $dialogBody.css({
                     padding: 0,
                     overflow: 'hidden'
@@ -226,7 +230,7 @@
             $.each(option.buttons, function (i, btn) {
                 $btn = $('<a>' + btn.text + '</a>');
                 $dialogFoot.append($btn);
-                if (typeof (btn.callback) == Function) {
+                if ($.type(btn.callback) === 'function') {
                     $btn.on('click.dialog', btn.callback);
                 }
                 else if (!btn.callback) {
@@ -293,17 +297,20 @@
 	 * });
      */
     $.dialog.message = function (option) {
+        if (option == undefined) {
+            option = {};
+        }
         option.message = true;
-        option.title = null;
-        option.hideX = null;
-        option.buttons = null;
-        option.size = null;
-        option.drag = null;
-        option.padding = null;
-        if (option.timeout == null) {
+        option.title = undefined;
+        option.hideX = undefined;
+        option.buttons = undefined;
+        option.size = undefined;
+        option.drag = undefined;
+        option.padding = undefined;
+        if (option.timeout == undefined) {
             option.timeout = 2000;
         }
-        if (option.lock == null) {
+        if (option.lock == undefined) {
             option.lock = false;
         }
         option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '<span/>';
@@ -328,16 +335,19 @@
 	 * });
      */
     $.dialog.alert = function (option) {
-        option.message = null;
-        if (option.title == null) {
-            option.title = '提示';
+        if (option == undefined) {
+            option = {};
         }
-        if (option.hideX == null) {
+        option.message = undefined;
+        if (option.title == undefined) {
+            option.title = $.dialog.l18n.alert;
+        }
+        if (option.hideX == undefined) {
             option.hideX = true;
         }
         option.buttons = [
             {
-                text: '确定'
+                text: $.dialog.l18n.ok
             }
         ];
         option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '<span/>';
@@ -364,23 +374,26 @@
 	 * },function(){},function(){});
      */
     $.dialog.confirm = function (option, yes, no) {
-        option.message = null;
-        if (option.title == null) {
-            option.title = '提示';
+        if (option == undefined) {
+            option = {};
         }
-        if (option.content == null) {
-            option.content = '确认操作吗？';
+        option.message = undefined;
+        if (option.title == undefined) {
+            option.title = $.dialog.l18n.confirm;
         }
-        if (option.hideX == null) {
+        if (option.content == undefined) {
+            option.content = $.dialog.l18n.confirmText;
+        }
+        if (option.hideX == undefined) {
             option.hideX = true;
         }
         option.buttons = [
             {
-                text: '确定',
+                text: $.dialog.l18n.yes,
                 callback: yes
             },
             {
-                text: '取消',
+                text: $.dialog.l18n.no,
                 callback: no
             }
         ];
@@ -408,8 +421,11 @@
 	 * });
      */
     $.dialog.open = function (option) {
-        option.message = null;
-        if (option.inFrame == null) {
+        if (option == undefined) {
+            option = {};
+        }
+        option.message = undefined;
+        if (option.inFrame == undefined) {
             option.inFrame = false;
         }
         if (option.inFrame) {
@@ -450,7 +466,10 @@
 	 * });
      */
     $.fn.dialog = function (option) {
-        option.message = null;
+        if (option == undefined) {
+            option = {};
+        }
+        option.message = undefined;
         option.content = $(this).html();
         return $.dialog(option);
     };
@@ -471,6 +490,9 @@
 	 * });
      */
     $.fn.preview = function (option) {
+        if (option == undefined) {
+            option = {};
+        }
         $(this).each(function () {
             var $this = $(this),
                 $panel = $('<div class=\'ZLDialog_panel\'></div>'),
@@ -483,7 +505,7 @@
             }
             if (option.content) {
                 if (option.type) {
-                    if (option.type == 'img') {
+                    if (option.type === 'img') {
                         if (option.size) {
                             $panel.html('<img style=\'' + (option.size.width ? 'max-width:' + option.size.width + 'px;' : '') + (option.size.height ? 'max-height:' + option.size.height + 'px;' : '') + '\' src=\'' + option.content + '\' />');
                         }
@@ -508,7 +530,7 @@
                     });
                 }, option.timeout);
             }
-            if (option.type != 'img' && option.size) {
+            if (option.type !== 'img' && option.size) {
                 $panel.width(option.size.width).height(option.size.height);
             }
             $panel.css({
@@ -523,11 +545,11 @@
                         option.showBack();
                     }
                 });
-                if (option.direction == 'top' || option.direction == 'bottom') {
+                if (option.direction === 'top' || option.direction === 'bottom') {
                     $panel.offset({
                         left: $this.offset().left + ($this.outerWidth(true) - $panel.outerWidth(true)) / 2
                     });
-                    if (option.direction == 'top') {
+                    if (option.direction === 'top') {
                         $panel.offset({
                             top: $this.offset().top - $panel.outerHeight(true) - 5
                         });
@@ -540,7 +562,7 @@
                     $panel.offset({
                         top: $this.offset().top + ($this.outerHeight(true) - $panel.outerHeight(true)) / 2
                     });
-                    if (option.direction == 'left') {
+                    if (option.direction === 'left') {
                         $panel.offset({
                             left: $this.offset().left - $panel.outerWidth(true) - 5
                         });
@@ -550,7 +572,7 @@
                         });
                     }
                 }
-                if (option.type == 'img') {
+                if (option.type === 'img') {
                     $panel.height($panel.children().height());
                 }
             }).on('mouseout.dialog', function () {
@@ -576,5 +598,19 @@
                 });
             });
         });
+    };
+
+    /**
+     * 国际化字符串
+     */
+    $.dialog.l18n = {
+        title: '对话框',
+        alert: '提示',
+        confirm: '确认',
+        ok: '确定',
+        yes: '确定',
+        no: '取消',
+        confirmText: '确定要执行这个操作吗？',
+        close: '关闭'
     };
 })($);
