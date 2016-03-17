@@ -55,7 +55,7 @@
 
     /**
      * 设置国际化字符串
-     * @param l18n  {String/Object}    语言名称/国际化字符串对象
+     * @param  l18n  {String/Object}    语言名称/国际化字符串对象
      * @example
      * $.dialog.setL18n(语言名称);
      * $.dialog.setL18n({
