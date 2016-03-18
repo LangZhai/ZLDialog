@@ -4,223 +4,58 @@
         <meta charset="utf-8">
         <meta name="description" content="ZLDialog是一款由LangZhai(智能小菜菜)开发的基于jQuery的轻量级弹窗插件。">
         <meta name="keywords" content="ZLDialog,jQuery弹窗插件,LangZhai,智能小菜菜,SmartCai">
-        <link rel="stylesheet" href="resource/blackboard.min.css">
+        <link rel="stylesheet" href="resource/prism.min.css">
         <link rel="stylesheet" href="dist/skin/default/zldialog.default.min.css">
+        <link rel="stylesheet" href="index.min.css">
         <title>ZLDialog by LangZhai(智能小菜菜)</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background: #777777;
-                font-family: 'Courier New', 'Microsoft YaHei';
-            }
-
-            .textRight {
-                text-align: right;
-            }
-
-            .hidden {
-                display: none;
-            }
-
-            #contentDIV {
-                margin: 0 auto;
-                position: relative;
-                width: 1000px;
-                padding: 20px;
-                color: #FFFFFF;
-                text-shadow: 1px 1px 1px #337799;
-            }
-
-            #contentDIV a {
-                color: #000000;
-                text-shadow: 1px 1px 1px #FFFFFF;
-                text-decoration: none;
-                font-style: italic;
-                font-weight: bold;
-            }
-
-            #contentDIV a:hover {
-                text-decoration: underline;
-            }
-
-            pre {
-                text-shadow: none;
-            }
-
-            #headDIV h1 {
-                margin-bottom: 0;
-            }
-
-            #headDIV h4 {
-                margin: 0;
-            }
-
-            #headDIV h5 {
-                margin-top: 10px;
-            }
-
-            #menuUL {
-                list-style: none;
-                margin: 10px 0 0 0;
-                padding: 0;
-                font-weight: bold;
-            }
-
-            #menuUL li {
-                display: inline-block;
-                padding: 5px 20px;
-                margin: 0 10px;
-                cursor: pointer;
-                background: #888888;
-                box-shadow: 1px 1px 1px #000000;
-            }
-
-            #menuUL li {
-            + display : inline;
-            }
-
-            #menuUL li:hover, #menuUL li.current {
-                background: #555555;
-            }
-
-            #contentWrapDIV {
-                border-top: 2px solid #AAAAAA;
-                border-bottom: 2px solid #AAAAAA;
-                overflow: hidden;
-            + padding : 20 px 0 0 0;
-            }
-
-            #contentWrapDIV h2 {
-                color: #000000;
-                text-shadow: 1px 1px 1px #FFFFFF;
-            }
-
-            #contentWrapDIV p {
-                line-height: 25px;
-                font-size: 14px;
-            }
-
-            #contentWrapDIV > div {
-                width: 1000%;
-            }
-
-            #contentWrapDIV > div > div {
-                float: left;
-                width: 1000px;
-                min-height: 400px;
-                padding-bottom: 10px;
-            }
-
-            .attrTable {
-                border-collapse: collapse;
-                width: 100%;
-                font-size: 13px;
-                background: #DDDDDD;
-                color: #233233;
-                text-shadow: 1px 1px 1px #FFFFFF;
-                border-color: #AAAAAA;
-            }
-
-            .attrTable .h3TD {
-                background: #BBBBBB;
-            }
-
-            .attrTable td {
-                border-color: #AAAAAA;
-                padding: 5px;
-            }
-
-            .attrTable th {
-                border-color: #AAAAAA;
-                padding: 5px 0;
-            }
-
-            #tryArea {
-                background: #000000;
-                color: #FFFFFF;
-                font-size: 14px;
-                height: 250px;
-                width: 1000px;
-                resize: none;
-                box-sizing: border-box;
-                margin-bottom: 15px;
-            }
-
-            #footDIV div {
-                float: right;
-            }
-
-            #footDIV div a {
-                display: block;
-            }
-
-            #footDIV div img {
-                border: none;
-            }
-
-            #footDIV h4 {
-                margin-bottom: 0;
-            }
-
-            #footDIV h5 {
-                margin-top: 10px;
-            }
-        </style>
     </head>
     <body>
-        <div id="contentDIV">
+        <div id="contentWrapDIV">
             <div id="headDIV" class="textRight">
                 <h1>ZLDialog</h1>
                 <h4>V 1.4.1</h4>
                 <h5>build 2016.03.17</h5>
             </div>
             <ul id="menuUL">
-                <li class="current">初识我</li>
-                <li>了解我</li>
-                <li>非礼我</li>
-                <li>关于我</li>
-                <li>迎娶我</li>
+                <li class="current"><h2>初识我</h2></li>
+                <li><h2>了解我</h2></li>
+                <li><h2>非礼我</h2></li>
+                <li><h2>关于我</h2></li>
+                <li><h2>迎娶我</h2></li>
             </ul>
-            <div id="contentWrapDIV">
+            <div id="contentDIV">
                 <div>
-                    <div>
-                        <h2>我是什么？</h2>
-                        <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
-                        <button id="firstA">手贱点一下！</button>
-                        <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:" id="demoA">@LangZhai(智能小菜菜)</a>！！！
-                        </p>
-                        <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:" id="browserA">更现代的浏览器</a>吧！
-                        </p>
-                        <p>啊对了，顺便提一嘴，欢迎大家为我设计新的皮肤哦O(∩_∩)O~~</p>
-                    </div>
-                    <div class="hidden">
-                        <h2>如何调教我？</h2>
-                        <p>首先将ZLDialog的CSS及JS分别引入到你的页面中：</p>
-<pre data-language="html">
-&lt;!DOCTYPE HTML&gt;
+                    <h2>我是什么？</h2>
+                    <p>大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件！别看我体积小，功能可是很丰富的哦！\(^o^)/~</p>
+                    <button id="firstA">手贱点一下！</button>
+                    <p>嘛，不过相信大家也都看出来了，我长得有点过于草率，至于为什么这么草率....当然要怪让我诞生的那坑货<a href="javascript:" id="demoA">@LangZhai(智能小菜菜)</a>！！！
+                    </p>
+                    <p>咳咳，说点正经的，从内部（JS代码）来说，我是兼容IE7+的，不过由于皮肤使用了CSS3的样式，这个都懂的，因此还是不建议各位看官老爷们坚守IE10以下浏览器，为了让我正常一些，还是使用<a href="javascript:" id="browserA">更现代的浏览器</a>吧！
+                    </p>
+                    <p>啊对了，顺便提一嘴，欢迎大家为我设计新的皮肤哦O(∩_∩)O~~</p>
+                </div>
+                <div class="hidden">
+                    <h2>如何调教我？</h2>
+                    <p>首先将ZLDialog的CSS及JS分别引入到你的页面中：</p>
+<pre class="language-markup"><code>&lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;ZLDialog-ReadMe&lt;/title&gt;
-        &lt;link rel="stylesheet" href="zldialog.default.min.css"&gt;
+        &lt;link href="zldialog.default.min.css"&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;!--为了使页面加载更快，最好将JS放置在&lt;body&gt;的末尾--&gt;
-        &lt;script src="jquery-1.12.1.min.js"&gt;&lt;/script&gt;
+        &lt;script src="jquery-1.12.2.min.js"&gt;&lt;/script&gt;
         &lt;script src="jquery.zldialog.min.js"&gt;&lt;/script&gt;
     &lt;/body&gt;
-&lt;/html&gt;
-</pre>
-                        <p>接下来就可以愉快地玩(LAI)耍(YI)啦(FA)！</p>
-<pre data-language="javascript">
-$.dialog.alert({
+&lt;/html&gt;</code></pre>
+                    <p>接下来就可以愉快地玩(LAI)耍(YI)啦(FA)！</p>
+<pre class="language-javascript"><code>$.dialog.alert({
     content: "弹弹弹，弹走鱼尾纹~~"
-});
-</pre>
-                        <button class="doJS">弹一下！</button>
-                        <p>很简单对吧？这只是一个很简单的例子。现在来看一个稍微复杂一点的！</p>
-<pre data-language="javascript">
-$.dialog({
+});</code></pre>
+                    <button class="doJS">弹一下！</button>
+                    <p>很简单对吧？这只是一个很简单的例子。现在来看一个稍微复杂一点的！</p>
+<pre class="language-javascript"><code>$.dialog({
     content: "就只是简单测试一下好了！",
     hideX: true,
     drag: false,
@@ -235,22 +70,18 @@ $.dialog({
             text: "好的呀！"
         }
     ]
-});
-</pre>
-                        <button class="doJS">弹一下！</button>
-                        <p>当然还有确认对话框！</p>
-<pre data-language="javascript">
-var closeDialog = $.dialog.confirm(null, function () {
+});</code></pre>
+                    <button class="doJS">弹一下！</button>
+                    <p>当然还有确认对话框！</p>
+<pre class="language-javascript"><code>var closeDialog = $.dialog.confirm(null, function () {
     $.dialog.message({
         content: "啦啦啦啦啦~~~"
     });
     closeDialog();
-});
-</pre>
-                        <button class="doJS">弹一下！</button>
-                        <p>也是确认对话框！</p>
-<pre data-language="javascript">
-var closeDialog = $.dialog.confirm({
+});</code></pre>
+                    <button class="doJS">弹一下！</button>
+                    <p>也是确认对话框！</p>
+<pre class="language-javascript"><code>var closeDialog = $.dialog.confirm({
     content: "同意？"
 }, function () {
     $.dialog.message({
@@ -261,24 +92,20 @@ var closeDialog = $.dialog.confirm({
     $.dialog.message({
         content: "我不管，反正你必须同意！"
     });
-});
-</pre>
-                        <button class="doJS">弹一下！</button>
-                        <p>依然是确认对话框！</p>
-<pre data-language="javascript">
-$.dialog.confirm({
+});</code></pre>
+                    <button class="doJS">弹一下！</button>
+                    <p>依然是确认对话框！</p>
+<pre class="language-javascript"><code>$.dialog.confirm({
     content: "啊哈！？",
     closeBack: function () {
         $.dialog.message({
             content: "无论如何我都会出现哟！"
         });
     }
-});
-</pre>
-                        <button class="doJS">弹一下！</button>
-                        <p>所以你看，我是不是很好调教呢？接下来换点别的吧，比如让我加载一个外部链接试试！</p>
-<pre data-language="javascript">
-$.dialog.open({
+});</code></pre>
+                    <button class="doJS">弹一下！</button>
+                    <p>所以你看，我是不是很好调教呢？接下来换点别的吧，比如让我加载一个外部链接试试！</p>
+<pre class="language-javascript"><code>$.dialog.open({
     title: "博客园",
     inFrame: true,
     size: {
@@ -286,12 +113,10 @@ $.dialog.open({
         height: 768
     },
     url: "http://www.cnblogs.com/"
-});
-</pre>
-                        <button class="doJS">加载！</button>
-                        <p>不仅如此，我还可以直接加载元素内容哦！</p>
-<pre data-language="javascript">
-//对话框初始化后会返回一个函数用来关闭对话框
+});</code></pre>
+                    <button class="doJS">加载！</button>
+                    <p>不仅如此，我还可以直接加载元素内容哦！</p>
+<pre class="language-javascript"><code>//对话框初始化后会返回一个函数用来关闭对话框
 var closeDialog = $("#testDIV").dialog({
     title: "百度搜索",
     hideX: true,
@@ -311,696 +136,30 @@ var closeDialog = $("#testDIV").dialog({
             text: "取消"
         }
     ]
-});
-</pre>
-                        <button class="doJS">加载！</button>
-                        <p>最后来介绍一下我的特殊技能——预览面板吧！</p>
-<pre data-language="javascript">
-$("#previewButton1").preview({
+});</code></pre>
+                    <button class="doJS">加载！</button>
+                    <p>最后来介绍一下我的特殊技能——预览面板吧！</p>
+<pre class="language-javascript"><code>$("#previewButton1").preview({
     content: "resource/preview.jpg",
     type: "img",
     direction: "top"
 });
 $("#previewButton2").preview({
     content: "这是一首简单的小情歌 唱着我们心头的曲折"
-});
-</pre>
-                        <button id="previewButton1">预览图片！</button>
-                        <button id="previewButton2">预览其他！</button>
-                        <p>依然不清楚怎么使用？好吧......下面是参数列表，自己看咯！~\(≧▽≦)/~啦啦啦</p>
-                        <table class="attrTable" border="1">
-                            <tr>
-                                <td colspan="4" class="h3TD"><h3>显示对话框——$.dialog(option)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>title</td>
-                                <td>对话框标题</td>
-                                <td>字符</td>
-                                <td>'对话框'</td>
-                            </tr>
-                            <tr>
-                                <td>content</td>
-                                <td>对话框内容</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>hideX</td>
-                                <td>是否隐藏右上角关闭按钮</td>
-                                <td>布尔</td>
-                                <td>false</td>
-                            </tr>
-                            <tr>
-                                <td>buttons</td>
-                                <td>对话框按钮数组</td>
-                                <td>对象数组
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>text</td>
-                                            <td>按钮文本</td>
-                                            <td>字符</td>
-                                            <td>null</td>
-                                        </tr>
-                                        <tr>
-                                            <td>callback</td>
-                                            <td>按钮点击回调函数</td>
-                                            <td>函数</td>
-                                            <td>null（点击后关闭对话框）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>size</td>
-                                <td>对话框大小</td>
-                                <td>对象|'full'
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>宽度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>高度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>drag</td>
-                                <td>是否允许拖动对话框</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>lock</td>
-                                <td>是否添加背景锁定</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>对话框显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>对话框关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>padding</td>
-                                <td>对话框内容padding</td>
-                                <td>字符（写法同CSS）|'iframe'</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="h3TD"><h3>显示消息框——$.dialog.message(option)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>content</td>
-                                <td>消息框内容</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>2000</td>
-                            </tr>
-                            <tr>
-                                <td>lock</td>
-                                <td>是否添加背景锁定</td>
-                                <td>布尔</td>
-                                <td>false</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>消息框显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>消息框关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="h3TD"><h3>显示警告框——$.dialog.alert(option)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>title</td>
-                                <td>警告框标题</td>
-                                <td>字符</td>
-                                <td>'提示'</td>
-                            </tr>
-                            <tr>
-                                <td>content</td>
-                                <td>警告框内容</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>hideX</td>
-                                <td>是否隐藏右上角关闭按钮</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>size</td>
-                                <td>警告框大小</td>
-                                <td>对象|'full'
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>宽度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>高度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>drag</td>
-                                <td>是否允许拖动警告框</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>lock</td>
-                                <td>是否添加背景锁定</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>警告框显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>警告框关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>padding</td>
-                                <td>警告框内容padding</td>
-                                <td>字符（写法同CSS）|'iframe'</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="h3TD"><h3>显示确认警告框——$.dialog.confirm(option,yes,no)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>title</td>
-                                <td>警告框标题</td>
-                                <td>字符</td>
-                                <td>'对话框'</td>
-                            </tr>
-                            <tr>
-                                <td>content</td>
-                                <td>警告框内容</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>hideX</td>
-                                <td>是否隐藏右上角关闭按钮</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>size</td>
-                                <td>警告框大小</td>
-                                <td>对象|'full'
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>宽度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>高度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>drag</td>
-                                <td>是否允许拖动警告框</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>lock</td>
-                                <td>是否添加背景锁定</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>警告框显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>警告框关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>padding</td>
-                                <td>警告框内容padding</td>
-                                <td>字符（写法同CSS）|'iframe'</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><h4>Ps:参数列表中"yes"和"no"分别是"确认"和"取消"按钮的回调函数，直接传入即可。</h4></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="h3TD"><h3>加载外部链接——$.dialog.open(option)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>url</td>
-                                <td>链接地址</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>title</td>
-                                <td>对话框标题</td>
-                                <td>字符</td>
-                                <td>'对话框'</td>
-                            </tr>
-                            <tr>
-                                <td>content</td>
-                                <td>对话框内容</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>hideX</td>
-                                <td>是否隐藏右上角关闭按钮</td>
-                                <td>布尔</td>
-                                <td>false</td>
-                            </tr>
-                            <tr>
-                                <td>buttons</td>
-                                <td>对话框按钮数组</td>
-                                <td>对象数组
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>text</td>
-                                            <td>按钮文本</td>
-                                            <td>字符</td>
-                                            <td>null</td>
-                                        </tr>
-                                        <tr>
-                                            <td>callback</td>
-                                            <td>按钮点击回调函数</td>
-                                            <td>函数</td>
-                                            <td>null（点击后关闭对话框）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>size</td>
-                                <td>对话框大小</td>
-                                <td>对象|'full'
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>宽度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>高度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>drag</td>
-                                <td>是否允许拖动对话框</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>lock</td>
-                                <td>是否添加背景锁定</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>对话框显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>对话框关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>padding</td>
-                                <td>对话框内容padding</td>
-                                <td>字符（写法同CSS）|'iframe'</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>inFrame</td>
-                                <td>是否在Iframe中加载</td>
-                                <td>布尔</td>
-                                <td>false</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="h3TD"><h3>加载元素内容——$.fn.dialog(option)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>title</td>
-                                <td>对话框标题</td>
-                                <td>字符</td>
-                                <td>'对话框'</td>
-                            </tr>
-                            <tr>
-                                <td>hideX</td>
-                                <td>是否隐藏右上角关闭按钮</td>
-                                <td>布尔</td>
-                                <td>false</td>
-                            </tr>
-                            <tr>
-                                <td>buttons</td>
-                                <td>对话框按钮数组</td>
-                                <td>对象数组
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>text</td>
-                                            <td>按钮文本</td>
-                                            <td>字符</td>
-                                            <td>null</td>
-                                        </tr>
-                                        <tr>
-                                            <td>callback</td>
-                                            <td>按钮点击回调函数</td>
-                                            <td>函数</td>
-                                            <td>null（点击后关闭对话框）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>size</td>
-                                <td>对话框大小</td>
-                                <td>对象|'full'
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>宽度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>高度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>drag</td>
-                                <td>是否允许拖动对话框</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>lock</td>
-                                <td>是否添加背景锁定</td>
-                                <td>布尔</td>
-                                <td>true</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>对话框显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>对话框关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>padding</td>
-                                <td>对话框内容padding</td>
-                                <td>字符（写法同CSS）|'iframe'</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="h3TD"><h3>显示预览面板——$.fn.preview(option)</h3></td>
-                            </tr>
-                            <tr>
-                                <th>参数名</th>
-                                <th>参数意义</th>
-                                <th>值类型</th>
-                                <th>默认值</th>
-                            </tr>
-                            <tr>
-                                <td>content</td>
-                                <td>预览内容</td>
-                                <td>字符</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>type</td>
-                                <td>预览类型</td>
-                                <td>字符（限选'img'）</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>自动关闭延时（毫秒）</td>
-                                <td>数字</td>
-                                <td>500</td>
-                            </tr>
-                            <tr>
-                                <td>size</td>
-                                <td>预览面板大小</td>
-                                <td>对象
-                                    <table class="attrTable" border="1">
-                                        <tr>
-                                            <th>参数名</th>
-                                            <th>参数意义</th>
-                                            <th>值类型</th>
-                                            <th>默认值</th>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>宽度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>高度</td>
-                                            <td>数字</td>
-                                            <td>null（自适应）</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>showBack</td>
-                                <td>预览面板显示回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>closeBack</td>
-                                <td>预览面板关闭回调函数</td>
-                                <td>函数</td>
-                                <td>null</td>
-                            </tr>
-                            <tr>
-                                <td>padding</td>
-                                <td>预览面板内容padding</td>
-                                <td>字符（写法同CSS）|'iframe'</td>
-                                <td>'10px'（type为'img'时）</td>
-                            </tr>
-                            <tr>
-                                <td>direction</td>
-                                <td>预览面板依附位置</td>
-                                <td>字符（限选'top'、'right'、'bottom'、'left'）</td>
-                                <td>'right'</td>
-                            </tr>
-                        </table>
-                        <h2>国际化！</h2>
-                        <p>是的，我已经正式支持国际化啦~~~小伙伴们快来感受下吧！</p>
-                        <p>要使用国际化，需要先将国际化模块引入到你的页面中：</p>
-<pre data-language="html">
-&lt;script src="jquery.zldialog.l18n.min.js"&gt;&lt;/script&gt;
-</pre>
-                        <p>然后就可以用两种姿势放肆地调戏我啦！</p>
-                        <p>姿势一：</p>
-<pre data-language="javascript">
-$.dialog.setL18n('en');
-</pre>
-                        <p>姿势二：</p>
-<pre data-language="javascript">
-$.dialog.setL18n({
+});</code></pre>
+                    <button id="previewButton1">预览图片！</button>
+                    <button id="previewButton2">预览其他！</button>
+                    <p>依然不清楚怎么使用？好吧......下面是参数列表，自己看咯！~\(≧▽≦)/~啦啦啦</p>
+                    <table id="attrTable"></table>
+                    <h2>国际化！</h2>
+                    <p>是的，我已经正式支持国际化啦~~~小伙伴们快来感受下吧！</p>
+                    <p>要使用国际化，需要先将国际化模块引入到你的页面中：</p>
+                    <pre class="language-markup"><code>&lt;script src="jquery.zldialog.l18n.min.js"&gt;&lt;/script&gt;</code></pre>
+                    <p>然后就可以用两种姿势放肆地调戏我啦！</p>
+                    <p>姿势一：</p>
+                    <pre class="language-javascript"><code>$.dialog.setL18n('en');</code></pre>
+                    <p>姿势二：</p>
+<pre class="language-javascript"><code>$.dialog.setL18n({
     title: 'Dialog',
     alert: 'Alert',
     confirm: 'Confirm',
@@ -1009,41 +168,39 @@ $.dialog.setL18n({
     no: 'No',
     confirmText: 'Are you sure that you want to perform this action?',
     close: 'Close'
-});
-</pre>
-                    </div>
-                    <div class="hidden">
-                        <h2>讨厌啦！</h2>
-                        <p>已经把持不住了？那就试试你到底行不行吧！</p>
-                        <textarea id="tryArea">
+});</code></pre>
+                </div>
+                <div class="hidden">
+                    <h2>讨厌啦！</h2>
+                    <p>已经把持不住了？那就试试你到底行不行吧！</p>
+                        <textarea>
 $.dialog.message({
     content: "开心时刻必胜客~~"
 });
                         </textarea>
-                        <button class="doJS">运行！</button>
-                    </div>
-                    <div class="hidden">
-                        <h2>我的诞生</h2>
-                        <p>其实，根本没有想到我会降生于这个世界......</p>
-                        <p>据说是为了满足某人的项目开发以及学习研究需要才诞生的。【所以不得不吐槽一下这皮肤真的让人家很不舒服呢！(╯﹏╰）】</p>
-                        <h2>我的成长</h2>
-                        <p id="readme" style="white-space: pre-wrap;"></p>
-                        <h2>关于作者</h2>
-                        <p>咳咳，终于该我登场了，妖怪速速退散！！！【散你妹，傻X】【左边泥垢！！！】</p>
-                        <p>
-                            好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在55kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
+                    <button class="doJS">运行！</button>
+                </div>
+                <div class="hidden">
+                    <h2>我的诞生</h2>
+                    <p>其实，根本没有想到我会降生于这个世界......</p>
+                    <p>据说是为了满足某人的项目开发以及学习研究需要才诞生的。【所以不得不吐槽一下这皮肤真的让人家很不舒服呢！(╯﹏╰）】</p>
+                    <h2>我的成长</h2>
+                    <p id="readme" class="pre"></p>
+                    <h2>关于作者</h2>
+                    <p>咳咳，终于该我登场了，妖怪速速退散！！！【散你妹，傻X】【左边泥垢！！！】</p>
+                    <p>
+                        好了好了我们正常点。其实本人是10届CAVTC毕业生一枚，目前干着苦逼的开发工作，主要做Web及网站项目，籍贯四川成都，92年产，身高不超过170cm，体重大概在55kg，巨蟹座，好像是B型血，姑且算犬系，未婚，<!--
 							-->直男，但并不是直男癌【讲这么多废话是要闹甚！！！不会有妹子看上你的魂淡！！！】，因为看到某篇文章说<!--
 							--><a href="javascript:" id="linkA">“不定义JQuery插件，不要说会JQuery”</a><!--
 							-->，再加上确实也是项目需要因此就诞生了这货嗯。嘛，其实我也知道这皮肤真心丑爆，但是确实是没什么时间，并且我们看人不应该只看外表，看待一款插件也应该是这样嗯【分明是在找借口啊喂！】。于是<!--
 							-->觉得这货还算好用的老爷们，不妨为这货设计几款看得过去的皮肤，在这里替这货谢谢各位了！！！
-                        </p>
-                        <p>
-                            啊，对了，通常来讲这里应该留下联系方式对吧，于是我也勇敢地<a href="javascript:" id="lastA">来一发！！！</a>
-                        </p>
-                    </div>
-                    <div class="hidden">
-                        <h2><a href="https://github.com/langzhai/zldialog" target="_blank">GitHub</a></h2>
-                    </div>
+                    </p>
+                    <p>
+                        啊，对了，通常来讲这里应该留下联系方式对吧，于是我也勇敢地<a href="javascript:" id="lastA">来一发！！！</a>
+                    </p>
+                </div>
+                <div class="hidden">
+                    <h2><a href="https://github.com/LangZhai/ZLDialog" target="_blank">GitHub</a></h2>
                 </div>
             </div>
             <div id="footDIV">
@@ -1051,105 +208,54 @@ $.dialog.message({
                 <h5>本插件基于<a href="javascript:" id="licenseA">LGPL开源协议</a>开发，欢迎一切非商业/商业目的使用。</h5>
             </div>
         </div>
-        <div id="testDIV" class="hidden">
+        <script id="testDIV" type="text/html">
             <form action="http://www.baidu.com/s" target="_blank">
                 关键字　<input type="text" name="wd">
             </form>
-        </div>
-        <script src="resource/jquery-1.12.1.min.js"></script>
-        <script src="resource/rainbow-custom.min.js"></script>
+        </script>
+        <script id="template" type="text/html">
+            <thead>
+                <tr>
+                    <td colspan="4"><h3>#{data.title}</h3></td>
+                </tr>
+            </thead>
+            <tr>
+                <th>参数名</th>
+                <th>参数意义</th>
+                <th>值类型</th>
+                <th>默认值</th>
+            </tr>
+            #{nested.attr}
+            <tr class="#{data.ps===undefined?'hidden':''}">
+                <td colspan="4"><h4>PS:#{data.ps}</h4></td>
+            </tr>
+        </script>
+        <script id="template-attr" type="text/html" data-nested="attr">
+            <tr>
+                <td>#{data.name}</td>
+                <td>#{data.meaning}</td>
+                <td>#{data.type}
+                    #{data.sub===undefined?'':nested.sub}
+                </td>
+                <td>#{data.default}</td>
+            </tr>
+        </script>
+        <script id="template-sub" type="text/html" data-nested="sub">
+            <table>
+                <tr>
+                    <th>参数名</th>
+                    <th>参数意义</th>
+                    <th>值类型</th>
+                    <th>默认值</th>
+                </tr>
+                #{nested.attr}
+            </table>
+        </script>
+        <script src="resource/jquery-1.12.2.min.js"></script>
+        <script src="resource/prism.min.js"></script>
+        <script src="http://langzhai.github.io/ZLTemplate/dist/jquery.zltemplate.min.js"></script>
         <script src="dist/js/jquery.zldialog.min.js"></script>
         <script src="dist/js/jquery.zldialog.l18n.min.js"></script>
-        <script>
-            $(function () {
-                var $contentWrapDIV = $('#contentWrapDIV').children();
-
-                $.ajax({
-                    url: 'README.md'
-                }).done(function (data) {
-                    $('#readme').html(data.substring(data.indexOf('###我的成长') + 9, data.indexOf('###关于作者') - 2));
-                });
-                $('#menuUL').on('click', 'li', function () {
-                    var $this = $(this).addClass('current'), index = $this.index();
-                    $this.siblings().removeClass('current');
-                    $contentWrapDIV.children(':eq(' + index + ')').show(500).siblings().hide(500);
-                });
-                $('#firstA').on('click', function () {
-                    $.dialog.message({
-                        content: '哼(ˉ(∞)ˉ)唧！'
-                    });
-                });
-                $('#demoA').on('click', function () {
-                    var closeDialog = $.dialog({
-                        title: '泥垢！！！',
-                        content: '再说我坏话就把你删掉！',
-                        hideX: true,
-                        buttons: [
-                            {
-                                text: '怪我咯？',
-                                callback: function () {
-                                    closeDialog();
-                                    $.dialog.message({
-                                        content: '......'
-                                    });
-                                }
-                            },
-                            {
-                                text: '主人我错了！',
-                                callback: function () {
-                                    closeDialog();
-                                    $.dialog.message({
-                                        content: '哼~~【偷笑】'
-                                    });
-                                }
-                            }
-                        ]
-                    });
-                });
-                $('#browserA').on('click', function () {
-                    $.dialog({
-                        title: '建议使用它们',
-                        content: '<ul><li>Firefox</li><li>Chrome</li><li>Opera</li><li>Edge</li><li>Internet Explorer(10+)</li></ul>',
-                        padding: '0px 25px 0 0'
-                    });
-                });
-                $('#licenseA').on('click', function () {
-                    $.ajax({
-                        url: 'LICENSE'
-                    }).done(function (data) {
-                        $.dialog({
-                            title: 'GNU LESSER GENERAL PUBLIC LICENSE',
-                            content: '<div style=\'white-space: pre-wrap;\'>' + data + '</div>'
-                        });
-                    });
-                });
-                $('#linkA').on('click', function () {
-                    $.dialog.open({
-                        title: '不定义JQuery插件，不要说会JQuery',
-                        url: 'http://www.cnblogs.com/xcj26/p/3345556.html',
-                        inFrame: true,
-                        size: 'full'
-                    });
-                });
-                $('#lastA').on('click', function () {
-                    $.dialog({
-                        title: '联系作者',
-                        content: '【E-Mail】<br/>　　zl2005xyz@126.com<br/>　　zl2012xyz@hotmail.com'
-                    });
-                });
-                $('.doJS').on('click', function () {
-                    var $prev = $(this).prev();
-                    eval($prev.val() || $prev.text());
-                });
-                $('#previewButton1').preview({
-                    content: 'resource/preview.jpg',
-                    type: 'img',
-                    direction: 'top'
-                });
-                $('#previewButton2').preview({
-                    content: '这是一首简单的小情歌 唱着我们心头的曲折'
-                });
-            });
-        </script>
+        <script src="index.min.js"></script>
     </body>
 </html>

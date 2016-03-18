@@ -15,12 +15,9 @@
     height: 100%;
     background: #000000;
     z-index: 900000;
-    opacity: .3;
-    filter: 'alpha(opacity=30%)';
 }
 
 .ZLDialog {
-    font-size: 90%;
     display: none;
     background: #FFFFFF;
     z-index: 900000;

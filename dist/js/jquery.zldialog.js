@@ -266,7 +266,7 @@
             });
         }, 10);
         if ($dialogLock) {
-            $dialogLock.fadeIn(200);
+            $dialogLock.fadeTo(200, .3);
         }
         setTimeout(function () {
             $ZLDialog.show(200, function () {
@@ -313,7 +313,7 @@
         if (option.lock == undefined) {
             option.lock = false;
         }
-        option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '<span/>';
+        option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '</span>';
         return $.dialog(option);
     };
 
@@ -350,7 +350,7 @@
                 text: $.dialog.l18n.ok
             }
         ];
-        option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '<span/>';
+        option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '</span>';
         return $.dialog(option);
     };
 
@@ -397,7 +397,7 @@
                 callback: no
             }
         ];
-        option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '<span/>';
+        option.content = '<span class=\'dialogMsgSpan\'>' + option.content + '</span>';
         return $.dialog(option);
     };
 
@@ -507,10 +507,10 @@
                 if (option.type) {
                     if (option.type === 'img') {
                         if (option.size) {
-                            $panel.html('<img style=\'' + (option.size.width ? 'max-width:' + option.size.width + 'px;' : '') + (option.size.height ? 'max-height:' + option.size.height + 'px;' : '') + '\' src=\'' + option.content + '\' />');
+                            $panel.html('<img style=\'' + (option.size.width ? 'max-width:' + option.size.width + 'px;' : '') + (option.size.height ? 'max-height:' + option.size.height + 'px;' : '') + '\' src=\'' + option.content + '\'>');
                         }
                         else {
-                            $panel.html('<img src=\'' + option.content + '\' />');
+                            $panel.html('<img src=\'' + option.content + '\'>');
                         }
                         option.padding = 0;
                     } else {
