@@ -1,5 +1,5 @@
 $(function () {
-    var $contentDIV = $('#contentDIV');
+    var $content = $('#contentDIV').children();
 
     $.ajax({
         url: 'attr.json',
@@ -15,7 +15,7 @@ $(function () {
     $('#menuUL').on('click', 'li', function () {
         var $this = $(this).addClass('current'), index = $this.index();
         $this.siblings().removeClass('current');
-        $contentDIV.children(':eq(' + index + ')').show(500).siblings().hide(500);
+        $content.stop().eq(index).show(500).siblings().hide(500);
     });
     $('#firstA').on('click', function () {
         $.dialog.message({

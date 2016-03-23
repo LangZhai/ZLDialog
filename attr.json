@@ -6,38 +6,38 @@
                 "name": "title",
                 "meaning": "对话框标题",
                 "type": "字符",
-                "default": "'对话框'"
+                "initial": "'对话框'"
             },
             {
                 "name": "content",
                 "meaning": "对话框内容",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "hideX",
                 "meaning": "是否隐藏右上角关闭按钮",
                 "type": "布尔",
-                "default": "false"
+                "initial": "false"
             },
             {
                 "name": "buttons",
                 "meaning": "对话框按钮数组",
                 "type": "对象数组",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "text",
                             "meaning": "按钮文本",
                             "type": "字符",
-                            "default": "null"
+                            "initial": "null"
                         },
                         {
                             "name": "callback",
                             "meaning": "按钮点击回调函数",
                             "type": "函数",
-                            "default": "null（点击后关闭对话框）"
+                            "initial": "null（点击后关闭对话框）"
                         }
                     ]
                 }
@@ -46,26 +46,26 @@
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "size",
                 "meaning": "对话框大小",
                 "type": "对象|'full'",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "width",
                             "meaning": "宽度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         },
                         {
                             "name": "height",
                             "meaning": "高度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         }
                     ]
                 }
@@ -74,31 +74,31 @@
                 "name": "drag",
                 "meaning": "是否允许拖动对话框",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "lock",
                 "meaning": "是否添加背景锁定",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "showBack",
                 "meaning": "对话框显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "对话框关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "padding",
                 "meaning": "对话框内容padding",
                 "type": "字符（写法同CSS）|'iframe'",
-                "default": "null"
+                "initial": "null"
             }
         ]
     },
@@ -109,31 +109,31 @@
                 "name": "content",
                 "meaning": "消息框内容",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "2000"
+                "initial": "2000"
             },
             {
                 "name": "lock",
                 "meaning": "是否添加背景锁定",
                 "type": "布尔",
-                "default": "false"
+                "initial": "false"
             },
             {
                 "name": "showBack",
                 "meaning": "消息框显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "消息框关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             }
         ]
     },
@@ -144,44 +144,44 @@
                 "name": "title",
                 "meaning": "警告框标题",
                 "type": "字符",
-                "default": "'提示'"
+                "initial": "'提示'"
             },
             {
                 "name": "content",
                 "meaning": "警告框内容",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "hideX",
                 "meaning": "是否隐藏右上角关闭按钮",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "size",
                 "meaning": "警告框大小",
                 "type": "对象|'full'",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "width",
                             "meaning": "宽度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         },
                         {
                             "name": "height",
                             "meaning": "高度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         }
                     ]
                 }
@@ -190,31 +190,31 @@
                 "name": "drag",
                 "meaning": "是否允许拖动警告框",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "lock",
                 "meaning": "是否添加背景锁定",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "showBack",
                 "meaning": "警告框显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "警告框关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "padding",
                 "meaning": "警告框内容padding",
                 "type": "字符（写法同CSS）|'iframe'",
-                "default": "null"
+                "initial": "null"
             }
         ]
     },
@@ -225,44 +225,44 @@
                 "name": "title",
                 "meaning": "警告框标题",
                 "type": "字符",
-                "default": "'确认'"
+                "initial": "'确认'"
             },
             {
                 "name": "content",
                 "meaning": "警告框内容",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "hideX",
                 "meaning": "是否隐藏右上角关闭按钮",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "size",
                 "meaning": "警告框大小",
                 "type": "对象|'full'",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "width",
                             "meaning": "宽度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         },
                         {
                             "name": "height",
                             "meaning": "高度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         }
                     ]
                 }
@@ -271,31 +271,31 @@
                 "name": "drag",
                 "meaning": "是否允许拖动警告框",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "lock",
                 "meaning": "是否添加背景锁定",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "showBack",
                 "meaning": "警告框显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "警告框关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "padding",
                 "meaning": "警告框内容padding",
                 "type": "字符（写法同CSS）|'iframe'",
-                "default": "null"
+                "initial": "null"
             }
         ],
         "ps": "参数列表中\"yes\"和\"no\"分别是\"确认\"和\"取消\"按钮的回调函数，直接传入即可。"
@@ -307,44 +307,44 @@
                 "name": "url",
                 "meaning": "链接地址",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "title",
                 "meaning": "对话框标题",
                 "type": "字符",
-                "default": "'对话框'"
+                "initial": "'对话框'"
             },
             {
                 "name": "content",
                 "meaning": "对话框内容",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "hideX",
                 "meaning": "是否隐藏右上角关闭按钮",
                 "type": "布尔",
-                "default": "false"
+                "initial": "false"
             },
             {
                 "name": "buttons",
                 "meaning": "对话框按钮数组",
                 "type": "对象数组",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "text",
                             "meaning": "按钮文本",
                             "type": "字符",
-                            "default": "null"
+                            "initial": "null"
                         },
                         {
                             "name": "callback",
                             "meaning": "按钮点击回调函数",
                             "type": "函数",
-                            "default": "null（点击后关闭对话框）"
+                            "initial": "null（点击后关闭对话框）"
                         }
                     ]
                 }
@@ -353,26 +353,26 @@
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "size",
                 "meaning": "对话框大小",
                 "type": "对象|'full'",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "width",
                             "meaning": "宽度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         },
                         {
                             "name": "height",
                             "meaning": "高度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         }
                     ]
                 }
@@ -381,37 +381,37 @@
                 "name": "drag",
                 "meaning": "是否允许拖动对话框",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "lock",
                 "meaning": "是否添加背景锁定",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "showBack",
                 "meaning": "对话框显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "对话框关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "padding",
                 "meaning": "对话框内容padding",
                 "type": "字符（写法同CSS）|'iframe'",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "inFrame",
                 "meaning": "是否在Iframe中加载",
                 "type": "布尔",
-                "default": "false"
+                "initial": "false"
             }
         ]
     },
@@ -422,32 +422,32 @@
                 "name": "title",
                 "meaning": "对话框标题",
                 "type": "字符",
-                "default": "'对话框'"
+                "initial": "'对话框'"
             },
             {
                 "name": "hideX",
                 "meaning": "是否隐藏右上角关闭按钮",
                 "type": "布尔",
-                "default": "false"
+                "initial": "false"
             },
             {
                 "name": "buttons",
                 "meaning": "对话框按钮数组",
                 "type": "对象数组",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "text",
                             "meaning": "按钮文本",
                             "type": "字符",
-                            "default": "null"
+                            "initial": "null"
                         },
                         {
                             "name": "callback",
                             "meaning": "按钮点击回调函数",
                             "type": "函数",
-                            "default": "null（点击后关闭对话框）"
+                            "initial": "null（点击后关闭对话框）"
                         }
                     ]
                 }
@@ -456,26 +456,26 @@
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "size",
                 "meaning": "对话框大小",
                 "type": "对象|'full'",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "width",
                             "meaning": "宽度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         },
                         {
                             "name": "height",
                             "meaning": "高度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         }
                     ]
                 }
@@ -484,31 +484,31 @@
                 "name": "drag",
                 "meaning": "是否允许拖动对话框",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "lock",
                 "meaning": "是否添加背景锁定",
                 "type": "布尔",
-                "default": "true"
+                "initial": "true"
             },
             {
                 "name": "showBack",
                 "meaning": "对话框显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "对话框关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "padding",
                 "meaning": "对话框内容padding",
                 "type": "字符（写法同CSS）|'iframe'",
-                "default": "null"
+                "initial": "null"
             }
         ]
     },
@@ -519,38 +519,38 @@
                 "name": "content",
                 "meaning": "预览内容",
                 "type": "字符",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "type",
                 "meaning": "预览类型",
                 "type": "字符（限选'img'）",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "timeout",
                 "meaning": "自动关闭延时（毫秒）",
                 "type": "数字",
-                "default": "500"
+                "initial": "500"
             },
             {
                 "name": "size",
                 "meaning": "预览面板大小",
                 "type": "对象",
-                "default": "null",
+                "initial": "null",
                 "sub": {
                     "attr": [
                         {
                             "name": "width",
                             "meaning": "宽度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         },
                         {
                             "name": "height",
                             "meaning": "高度",
                             "type": "数字",
-                            "default": "null（自适应）"
+                            "initial": "null（自适应）"
                         }
                     ]
                 }
@@ -559,25 +559,25 @@
                 "name": "showBack",
                 "meaning": "预览面板显示回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "closeBack",
                 "meaning": "预览面板关闭回调函数",
                 "type": "函数",
-                "default": "null"
+                "initial": "null"
             },
             {
                 "name": "padding",
                 "meaning": "预览面板内容padding",
                 "type": "字符（写法同CSS）|'iframe'",
-                "default": "'10px'（type为'img'时）"
+                "initial": "'10px'（type为'img'时）"
             },
             {
                 "name": "direction",
                 "meaning": "预览面板依附位置",
                 "type": "字符（限选'top'、'right'、'bottom'、'left'）",
-                "default": "'right'"
+                "initial": "'right'"
             }
         ]
     }
