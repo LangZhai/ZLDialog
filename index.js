@@ -77,7 +77,7 @@ $(function () {
     $('#lastA').on('click', function () {
         $.dialog({
             title: '联系作者',
-            content: '【E-Mail】<br>　　zl2005xyz@126.com<br>　　zl2012xyz@hotmail.com'
+            content: '【E-Mail】<br>　　<a href="mailto:zl2005xyz@126.com">zl2005xyz@126.com</a><br>　　<a href="mailto:zl2012xyz@hotmail.com">zl2012xyz@hotmail.com</a>'
         });
     });
     $('.doJS').on('click', function () {
