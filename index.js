@@ -2,13 +2,13 @@ $(function () {
     var $content = $('#contentDIV').children();
 
     $.ajax({
-        url: 'attr.json',
+        url: 'http://langzhai.github.io/ZLDialog/attr.json',
         dataType: 'json'
     }).done(function (data) {
         $('#attrTable').html($('#template').template(data, {nested: '#template-attr,#template-sub'}));
     });
     $.ajax({
-        url: 'README.md'
+        url: 'http://langzhai.github.io/ZLDialog/README.md'
     }).done(function (data) {
         $('#readme').html(data.substring(data.indexOf('###我的成长') + 9, data.indexOf('###关于作者') - 2));
     });
@@ -58,7 +58,7 @@ $(function () {
     });
     $('#licenseA').on('click', function () {
         $.ajax({
-            url: 'LICENSE'
+            url: 'http://langzhai.github.io/ZLDialog/LICENSE'
         }).done(function (data) {
             $.dialog({
                 title: 'GNU LESSER GENERAL PUBLIC LICENSE',
@@ -85,7 +85,7 @@ $(function () {
         eval($prev.val() || $prev.text());
     });
     $('#previewButton1').preview({
-        content: 'resource/preview.jpg',
+        content: 'https://avatars.githubusercontent.com/u/7680576',
         type: 'img',
         direction: 'top'
     });
