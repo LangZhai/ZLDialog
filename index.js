@@ -66,10 +66,11 @@ $(function () {
             });
         });
     });
-    $('#linkA').on('click', function () {
+    $('.linkA').on('click', function () {
+        var $this = $(this);
         $.dialog.open({
-            title: '不定义JQuery插件，不要说会JQuery',
-            url: 'http://www.cnblogs.com/xcj26/p/3345556.html',
+            title: $this.data('title'),
+            url: $this.data('url'),
             inFrame: true,
             size: 'full'
         });
