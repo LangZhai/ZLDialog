@@ -1,6 +1,6 @@
 /**
- * ZLDialog 1.4.4
- * Date: 2016-03-23
+ * ZLDialog 1.4.5
+ * Date: 2016-03-25
  * © 2013-2016 LangZhai(智能小菜菜)
  * This is licensed under the GNU LGPL, version 3 or later.
  * For details, see: http://www.gnu.org/licenses/lgpl.html
