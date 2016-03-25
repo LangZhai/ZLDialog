@@ -1,6 +1,7 @@
 $(function () {
     var $content = $('#contentDIV').children();
 
+    $.support.cors = true;
     $.ajax({
         url: 'http://langzhai.github.io/ZLDialog/attr.json',
         dataType: 'json'
@@ -10,7 +11,7 @@ $(function () {
     $.ajax({
         url: 'http://langzhai.github.io/ZLDialog/README.md'
     }).done(function (data) {
-        $('#readme').html(data.substring(data.indexOf('###我的成长') + 9, data.indexOf('###关于作者') - 2));
+        $('#readme').html(data.substring(data.indexOf('###我的成长') + 8, data.indexOf('###关于作者') - 1));
     });
     $('#menuUL').on('click', 'li', function () {
         var $this = $(this).addClass('current'), index = $this.index();
