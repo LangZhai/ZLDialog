@@ -6,7 +6,7 @@ $(function () {
         url: (location.protocol === 'file:' ? remoteUrl || '' : '') + 'attr.json',
         dataType: 'json'
     }).done(function (data) {
-        $('#attrTable').html($('#template').template(data, {nested: '#template-attr,#template-sub'}));
+        $('#attrTable').html(ZLTemplate('#template').template(data, {nested: '#template-attr,#template-sub'}));
     });
     $.ajax({
         url: (location.protocol === 'file:' ? remoteUrl || '' : '') + 'README.md'
