@@ -1,4 +1,4 @@
-# ZLDialog
+# Deprecated: ZLDialog
 ## 我是什么？
 大家好，我叫ZLDialog，是一款基于JQuery的轻量级弹框插件！别看我体积小，功能可是很丰富的哦！\\(^o^)/~  
   
