@@ -11,7 +11,7 @@ $(function () {
     $.ajax({
         url: (location.protocol === 'file:' ? remoteUrl || '' : '') + 'README.md'
     }).done(function (data) {
-        $('#readme').html(data.substring(data.indexOf('## 我的成长') + 8, data.indexOf('## 关于作者') - 1));
+        $('#readme').html(data.substring(data.indexOf('## 我的成长') + 9, data.indexOf('## 关于作者') - 1));
     });
     $('#menuUL').on('click', 'li', function () {
         var $this = $(this).addClass('current'), index = $this.index();
